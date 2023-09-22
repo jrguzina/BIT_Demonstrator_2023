@@ -605,5 +605,3 @@ List<CustomCO2Box> customCO2Boxes = [
     icon: Icon(Icons.forest),
   ),
 ];
-
-// test
