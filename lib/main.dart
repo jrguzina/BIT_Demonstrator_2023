@@ -1,12 +1,8 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
-import 'package:scaled_list/scaled_list.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:model_viewer_plus/model_viewer_plus.dart';
-import 'package:model_viewer_plus/model_viewer_plus.dart';
-import 'package:scaled_list/scaled_list.dart';
+
 
 void main() => runApp(DemonstratorApp());
 
@@ -32,35 +28,13 @@ class ThreeDModelPage extends StatelessWidget {
         body: Center(
           child: ModelViewer(
             backgroundColor: Color.fromARGB(0xFF, 0xEE, 0xEE, 0xEE),
-            src:
-                'https://www.turbosquid.com/de/3d-models/iphone-13-pro-max-3d-model-3d-1802164',
+            src: 'https://www.turbosquid.com/de/3d-models/iphone-13-pro-max-3d-model-3d-1802164',
             alt: 'A 3D model of an astronaut',
             ar: true,
             autoRotate: true,
-            iosSrc:
-                'https://modelviewer.dev/shared-assets/models/Astronaut.usdz',
+            iosSrc: 'https://modelviewer.dev/shared-assets/models/Astronaut.usdz',
             disableZoom: true,
           ),
-        ),
-      ),
-    );
-  }
-}
-
-class MyModelViewerScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('3D Model Viewer'),
-      ),
-      body: Center(
-        child: ModelViewer(
-          src:
-              'C:\\Users\\Niklas\\Downloads\\google_home\\scene.gltf', // Path to your GLTF model
-          alt: 'A 3D Model',
-          autoRotate: true, // Enable auto-rotation
-          cameraControls: true, // Enable camera controls
         ),
       ),
     );
@@ -213,6 +187,7 @@ class CategoryCard extends StatelessWidget {
 }
 */
 
+
 // Hier können Sie die Unterkategorie-Seiten implementieren
 class EnergyUsagePage extends StatelessWidget {
   @override
@@ -258,14 +233,12 @@ class EnergyUsagePage extends StatelessWidget {
             SizedBox(height: 20.0),
             Tile(
               title: 'Verlauf des Energieverbrauchs',
-              content:
-                  'Informationen über den Verlauf des Energieverbrauchs über die Zeit...',
+              content: 'Informationen über den Verlauf des Energieverbrauchs über die Zeit...',
             ),
             SizedBox(height: 20.0),
             Tile(
               title: 'Vergleiche mit Durchschnittsverbrauch',
-              content:
-                  'Vergleiche mit dem Durchschnittsverbrauch anderer Haushalte...',
+              content: 'Vergleiche mit dem Durchschnittsverbrauch anderer Haushalte...',
             ),
             SizedBox(height: 20.0),
             Tile(
@@ -279,12 +252,15 @@ class EnergyUsagePage extends StatelessWidget {
   }
 }
 
+
+
 class ChartData {
   final String room;
   final double value;
 
   ChartData(this.room, this.value);
 }
+
 
 class ResourceUsagePage extends StatelessWidget {
   @override
@@ -293,36 +269,62 @@ class ResourceUsagePage extends StatelessWidget {
       appBar: AppBar(
         title: Text('Verwendete Ressourcen'),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            Tile(
-              title: 'Materialien',
-              content: 'Informationen über die verwendeten Materialien...',
-            ),
-            SizedBox(height: 20.0),
-            Tile(
-              title: 'Herkunft',
-              content: 'Informationen über die Herkunft der Materialien...',
-            ),
-            SizedBox(height: 20.0),
-            Tile(
-              title: 'Recyclingfähigkeit',
-              content: 'Informationen über die Recyclingfähigkeit...',
-            ),
-            SizedBox(height: 20.0),
-            Tile(
-              title: 'Reduzierung des Ressourcenverbrauchs',
-              content: 'Tipps zur Reduzierung des Ressourcenverbrauchs...',
-            ),
-          ],
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              // Anzeige der PNG-Datei innerhalb der "Materialien" SizedBox
+              SizedBox(
+                width: double.infinity,
+                child: Card(
+                  child: Column(
+                    children: <Widget>[
+                      Container(
+                        alignment: Alignment.center,
+                        padding: EdgeInsets.all(16.0),
+                        child: Text(
+                          'Materialien',
+                          style: TextStyle(
+                            fontSize: 20.0,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                      Image.asset(
+                        'assets/materialien.png',
+                        fit: BoxFit.contain, // Das Bild wird an die verfügbare Breite angepasst
+                        alignment: Alignment.center, // Das Bild wird horizontal zentriert
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              SizedBox(height: 20.0),
+              // Die restlichen Inhalte der Seite
+              Tile(
+                title: 'Herkunft',
+                content: 'Informationen über die Herkunft der Materialien...',
+              ),
+              SizedBox(height: 20.0),
+              Tile(
+                title: 'Recyclingfähigkeit',
+                content: 'Informationen über die Recyclingfähigkeit...',
+              ),
+              SizedBox(height: 20.0),
+              Tile(
+                title: 'Reduzierung des Ressourcenverbrauchs',
+                content: 'Tipps zur Reduzierung des Ressourcenverbrauchs...',
+              ),
+            ],
+          ),
         ),
       ),
     );
   }
 }
+
 
 class TransportationPage extends StatelessWidget {
   @override
@@ -343,20 +345,17 @@ class TransportationPage extends StatelessWidget {
             SizedBox(height: 20.0),
             Tile(
               title: 'Energieverbrauch während des Transports',
-              content:
-                  'Informationen über den Energieverbrauch während des Transports...',
+              content: 'Informationen über den Energieverbrauch während des Transports...',
             ),
             SizedBox(height: 20.0),
             Tile(
               title: 'CO2-Fußabdruck durch Transportaktivitäten',
-              content:
-                  'Informationen über den CO2-Fußabdruck aufgrund von Transportaktivitäten...',
+              content: 'Informationen über den CO2-Fußabdruck aufgrund von Transportaktivitäten...',
             ),
             SizedBox(height: 20.0),
             Tile(
               title: 'Umweltfreundliche Lieferung und Logistik',
-              content:
-                  'Tipps und Informationen zur umweltfreundlichen Lieferung und Logistik...',
+              content: 'Tipps und Informationen zur umweltfreundlichen Lieferung und Logistik...',
             ),
           ],
         ),
@@ -365,6 +364,7 @@ class TransportationPage extends StatelessWidget {
   }
 }
 
+
 class CO2FootprintPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -372,34 +372,42 @@ class CO2FootprintPage extends StatelessWidget {
       appBar: AppBar(
         title: Text('CO2 Footprint'),
       ),
-      body: Stack(
-        children: [
-          Image.asset(
-            'assets/background_green.jpg',
-            fit: BoxFit.cover,
-            width: double.infinity,
-            height: double.infinity,
-          ),
-          Center(
-            child: Container(
-              width: double.infinity,
-              height: double.infinity,
-              margin: EdgeInsets.all(25.0),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(50.0),
-              ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            Text(
+              'Auswirkungen auf den CO2-Fußabdruck',
+              style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
             ),
-          ),
-          ListView(
-            scrollDirection: Axis.horizontal,
-                children: customCO2Boxes,
-            )
-        ]
+            SizedBox(height: 20.0),
+            Tile(
+              title: 'CO2-Emissionen während des Betriebs',
+              content: 'Informationen über die CO2-Emissionen während des Betriebs...',
             ),
-          );
+            SizedBox(height: 20.0),
+            Tile(
+              title: 'Maßnahmen zur Reduzierung von Emissionen',
+              content: 'Tipps und Informationen zur Reduzierung von Emissionen...',
+            ),
+            SizedBox(height: 20.0),
+            Tile(
+              title: 'Kompensationsmöglichkeiten',
+              content: 'Informationen über Möglichkeiten zur Kompensation von CO2-Emissionen...',
+            ),
+            SizedBox(height: 20.0),
+            Tile(
+              title: 'Tipps zur nachhaltigen Nutzung',
+              content: 'Tipps zur nachhaltigen Nutzung des Smart-Home-Produkts...',
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
+
 
 
 class Tile extends StatelessWidget {
@@ -440,168 +448,3 @@ class Tile extends StatelessWidget {
     );
   }
 }
-
-class CustomCO2Box extends StatelessWidget {
-  final String title;
-  final String content;
-  final Color colour;
-  final Icon icon;
-  final Widget? diagram;
-
-  CustomCO2Box(
-      {required this.title,
-      required this.content,
-      required this.icon,
-      this.colour = Colors.white,
-      this.diagram});
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(180),
-      child: Container(
-        decoration: BoxDecoration(
-          color: colour,
-          borderRadius: BorderRadius.circular(10.0),
-          boxShadow: [
-            BoxShadow(
-
-              color: Colors.black.withOpacity(0.5),
-              spreadRadius: 2,
-              blurRadius: 5,
-              offset: const Offset(0, 3),
-            ),
-          ],
-        ),
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Row(
-                children: <Widget>[
-                  icon,
-                  Text(
-                    title,
-                    style:
-                        TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
-                  ),
-                ],
-              ),
-              SizedBox(height: 10),
-              Text(content),
-              SizedBox(height: 10),
-              if (diagram != null) diagram!,
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-
-
-RotatedBox customCO2BoxWheel = RotatedBox(
-  quarterTurns: 3,
-  child: ListWheelScrollView(
-    //controller: FixedExtentScrollController(),
-    itemExtent: 600,
-    diameterRatio: 5,
-    //magnification: 1,
-    //offAxisFraction:0.5 ,
-    //overAndUnderCenterOpacity: 0.5,
-    //perspective: 0.001,
-    //squeeze: 1,
-    physics: const BouncingScrollPhysics(),
-    children: customCO2Boxes.map((box) {
-      return Transform.rotate(
-        angle: pi / 2 + pi / 180 * 0.5,
-        child: box,
-      );
-    }).toList(),
-  ),
-);
-
-List<CustomCO2Box> customCO2Boxes = [
-  CustomCO2Box(
-    title: 'CO2-Emissionen während der Herstellung',
-    content: 'Informationen über die CO2-Emissionen während der Herstellung',
-    colour: Color(0xFFc3c3c3),
-    icon: Icon(Icons.factory),
-    diagram: Container(
-      height: 200,
-      width: 200,
-      child:PieChart(
-      PieChartData(
-        sections: [
-          PieChartSectionData(
-            color: Colors.green,
-            title: 'Manufacturing',
-            value: 40,
-          ),
-          PieChartSectionData(
-            color: Colors.blue,
-            title: 'Distribution',
-            value: 30,
-          ),
-          PieChartSectionData(
-            color: Colors.yellow,
-            title: 'Design',
-            value: 20,
-          ),
-          PieChartSectionData(
-            color: Colors.orange,
-            title: 'Quality Control',
-            value: 10,
-          ),
-        ],
-        sectionsSpace: 0,
-        centerSpaceRadius: 40,
-        borderData: FlBorderData(
-          show: false,
-        ),
-      ),
-
-      ),
-    ),
-  ),
-  CustomCO2Box(
-    title: 'CO2-Emissionen während des Transports',
-    content: 'Informationen über die CO2-Emissionen während des Transports',
-    colour: Color(0xFFc3c3c3),
-    icon: Icon(Icons.local_shipping),
-  ),
-  CustomCO2Box(
-    title: 'CO2-Emissionen während des Betriebs',
-    content: 'Informationen über die CO2-Emissionen während des Betriebs',
-    colour: Color(0xFFc3c3c3),
-    icon: Icon(Icons.electric_bolt),
-  ),
-  CustomCO2Box(
-    title: 'CO2-Emissionen während des Recyclings',
-    content: 'Informationen über die ',
-    colour: Color(0xFFc3c3c3),
-    icon: Icon(Icons.recycling),
-  ),
-
-  CustomCO2Box(
-    title: 'Maßnahmen zur Reduzierung von Emissionen',
-    content: 'Tipps und Informationen zur Reduzierung von Emissionen...',
-    colour: Color(0xFFc3c3c3),
-    icon: Icon(Icons.battery_saver),
-  ),
-  CustomCO2Box(
-    title: 'Kompensationsmöglichkeiten',
-    content:
-        'Informationen über Möglichkeiten zur Kompensation von CO2-Emissionen...',
-    colour: Color(0xFFB8BC86),
-    icon: Icon(Icons.energy_savings_leaf),
-  ),
-  CustomCO2Box(
-    title: 'Tipps zur nachhaltigen Nutzung',
-    content: 'Tipps zur nachhaltigen Nutzung des Smart-Home-Produkts...',
-    colour: Color(0xFFB8BC86),
-    icon: Icon(Icons.forest),
-  ),
-];
