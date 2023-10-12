@@ -2,11 +2,9 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
-import 'package:scaled_list/scaled_list.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:model_viewer_plus/model_viewer_plus.dart';
-import 'package:model_viewer_plus/model_viewer_plus.dart';
-import 'package:scaled_list/scaled_list.dart';
+
 
 void main() => runApp(DemonstratorApp());
 
@@ -23,29 +21,119 @@ class DemonstratorApp extends StatelessWidget {
   }
 }
 
-class ThreeDModelPage extends StatelessWidget {
+class StartPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(title: const Text('Model Viewer')),
-        body: Center(
-          child: ModelViewer(
-            backgroundColor: Color.fromARGB(0xFF, 0xEE, 0xEE, 0xEE),
-            src:
-                'https://www.turbosquid.com/de/3d-models/iphone-13-pro-max-3d-model-3d-1802164',
-            alt: 'A 3D model of an astronaut',
-            ar: true,
-            autoRotate: true,
-            iosSrc:
-                'https://modelviewer.dev/shared-assets/models/Astronaut.usdz',
-            disableZoom: true,
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Bosch Smart Home Demonstrator'),
+      ),
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [Colors.blue, Colors.lightBlueAccent],
           ),
+        ),
+        child: Column(
+          children: <Widget>[
+            Expanded(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: <Widget>[
+                  CategoryCard(
+                    category: 'Energie',
+                    icon: Icon(Icons.flash_on),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => EnergyUsagePage(),
+                        ),
+                      );
+                    },
+                  ),
+                  CategoryCard(
+                    category: 'Transport',
+                    icon: Icon(Icons.directions_car),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => TransportationPage(),
+                        ),
+                      );
+                    },
+                  ),
+                ],
+              ),
+            ),
+            Expanded(
+              child: Align(
+                alignment: Alignment.center,
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.5),
+                        blurRadius: 10,
+                        spreadRadius: 2,
+                      ),
+                    ],
+                  ),
+                  padding: EdgeInsets.all(20),
+                  child: ModelViewer(
+                    src: 'assets/Format2.glb',
+                    autoPlay: true,
+                    backgroundColor: Colors.transparent,
+                    cameraControls: true,
+                    autoRotate: true,
+                  ),
+                ),
+              ),
+            ),
+            Expanded(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: <Widget>[
+                  CategoryCard(
+                    category: 'Ressourcen',
+                    icon: Icon(Icons.local_florist),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ResourceUsagePage(),
+                        ),
+                      );
+                    },
+                  ),
+                  CategoryCard(
+                    category: 'CO2 Footprint',
+                    icon: Icon(Icons.cloud_queue),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => CO2FootprintPage(),
+                        ),
+                      );
+                    },
+                  ),
+                ],
+              ),
+            ),
+          ],
         ),
       ),
     );
   }
 }
+
+
+
 
 class MyModelViewerScreen extends StatelessWidget {
   @override
@@ -67,97 +155,19 @@ class MyModelViewerScreen extends StatelessWidget {
   }
 }
 
-class StartPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Bosch Smart Home Demonstrator'),
-      ),
-      body: Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: NetworkImage(
-              'https://images.unsplash.com/photo-1633194883650-df448a10d554?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1576&q=80',
-            ),
-            fit: BoxFit.cover,
-          ),
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Expanded(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  CategoryCard(
-                    category: 'Energie',
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => EnergyUsagePage(),
-                        ),
-                      );
-                    },
-                  ),
-                  SizedBox(height: 20.0),
-                  CategoryCard(
-                    category: 'Ressourcen',
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => ResourceUsagePage(),
-                        ),
-                      );
-                    },
-                  ),
-                ],
-              ),
-            ),
-            Expanded(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  CategoryCard(
-                    category: 'Transport',
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => TransportationPage(),
-                        ),
-                      );
-                    },
-                  ),
-                  SizedBox(height: 20.0),
-                  CategoryCard(
-                    category: 'CO2 Footprint',
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => CO2FootprintPage(),
-                        ),
-                      );
-                    },
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
+
+
+
+
+
+
 
 class CategoryCard extends StatelessWidget {
   final String category;
   final VoidCallback onTap;
+  final Icon icon;
 
-  CategoryCard({required this.category, required this.onTap});
+  CategoryCard({required this.category, required this.onTap,required this.icon});
 
   @override
   Widget build(BuildContext context) {
@@ -170,50 +180,25 @@ class CategoryCard extends StatelessWidget {
           color: Colors.white.withOpacity(0.8),
           borderRadius: BorderRadius.circular(10.0),
         ),
-        child: Center(
-          child: Text(
-            category,
-            style: TextStyle(fontSize: 20.0),
-          ),
-        ),
+    child: Center(
+    child: Column(
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: [
+    icon, // Display the icon here
+    Text(
+    category,
+    style: TextStyle(fontSize: 20.0),
+    ),
+    ],
+    ),
+    ),
       ),
     );
   }
 }
-/*class Tile extends StatelessWidget {
-  final String title;
-  final String content;
 
-  Tile({required this.title, required this.content});
 
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.white.withOpacity(0.8),
-        borderRadius: BorderRadius.circular(10.0),
-      ),
-      padding: EdgeInsets.all(16.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Text(
-            title,
-            style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
-          ),
-          SizedBox(height: 10.0),
-          Text(
-            content,
-            style: TextStyle(fontSize: 16.0),
-          ),
-        ],
-      ),
-    );
-  }
-}
-*/
-
-// Hier können Sie die Unterkategorie-Seiten implementieren
+//Ab hier können die Kategorien bearbeitet werden
 class EnergyUsagePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -400,7 +385,6 @@ class CO2FootprintPage extends StatelessWidget {
           );
   }
 }
-
 
 class Tile extends StatelessWidget {
   final String title;

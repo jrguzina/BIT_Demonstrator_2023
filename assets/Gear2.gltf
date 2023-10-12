@@ -1,0 +1,263 @@
+{
+  "asset": {
+    "version": "2.0",
+    "generator": "TurboSquid Stem Converter v1.0.0"
+  },
+  "accessors": [
+    {
+      "bufferView": 0,
+      "byteOffset": 0,
+      "componentType": 5126,
+      "count": 33316,
+      "type": "VEC3",
+      "max": [
+        9.070802688598633,
+        1.965808391571045,
+        9.070802688598633
+      ],
+      "min": [
+        -9.07080364227295,
+        -1.965808391571045,
+        -9.07080364227295
+      ]
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 0,
+      "componentType": 5126,
+      "count": 33316,
+      "type": "VEC3",
+      "max": [
+        0.9999909996986389,
+        1.0,
+        0.9999909400939941
+      ],
+      "min": [
+        -0.9999909400939941,
+        -1.0,
+        -0.9999909996986389
+      ]
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 0,
+      "componentType": 5126,
+      "count": 33316,
+      "type": "VEC2",
+      "max": [
+        0.9481221437454224,
+        0.998046875
+      ],
+      "min": [
+        0.001953125,
+        0.001953125
+      ]
+    },
+    {
+      "bufferView": 3,
+      "byteOffset": 0,
+      "componentType": 5123,
+      "count": 179244,
+      "type": "SCALAR",
+      "max": [
+        33315.0
+      ],
+      "min": [
+        0.0
+      ]
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 1424600,
+      "uri": "Gear2.bin"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteOffset": 0,
+      "byteLength": 399792,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 399792,
+      "byteLength": 399792,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 799584,
+      "byteLength": 266528,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 1066112,
+      "byteLength": 358488,
+      "target": 34963
+    }
+  ],
+  "materials": [
+    {
+      "name": "Gear_2",
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 0
+        },
+        "metallicRoughnessTexture": {
+          "index": 1
+        }
+      },
+      "alphaMode": "OPAQUE",
+      "occlusionTexture": {
+        "index": 1
+      },
+      "normalTexture": {
+        "index": 2
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "name": "Gear2",
+      "primitives": [
+        {
+          "mode": 4,
+          "material": 0,
+          "indices": 3,
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2
+          }
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "children": [
+        1
+      ]
+    },
+    {
+      "name": "Gear2_$_PreRotation",
+      "matrix": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -4.371138828673793e-08,
+        -1.0,
+        0.0,
+        0.0,
+        1.0,
+        -4.371138828673793e-08,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "children": [
+        2
+      ]
+    },
+    {
+      "name": "Gear2_$_GeometricTranslation",
+      "matrix": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        4.76837158203125e-07,
+        -1.0396017842140282e-06,
+        1.9657915830612183,
+        1.0
+      ],
+      "children": [
+        3
+      ]
+    },
+    {
+      "name": "Gear2_$_GeometricRotation",
+      "matrix": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -1.6292068494294654e-07,
+        1.0,
+        0.0,
+        0.0,
+        -1.0,
+        -1.6292068494294654e-07,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "children": [
+        4
+      ]
+    },
+    {
+      "name": "Gear2",
+      "mesh": 0
+    }
+  ],
+  "scenes": [
+    {
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "scene": 0,
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987,
+      "wrapS": 10497,
+      "wrapT": 10497
+    }
+  ],
+  "images": [
+    {
+      "uri": "textures/baseColor.jpg"
+    },
+    {
+      "uri": "textures/occlusionRoughnessMetallic.jpg"
+    },
+    {
+      "uri": "textures/normal.png"
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0
+    },
+    {
+      "sampler": 0,
+      "source": 1
+    },
+    {
+      "sampler": 0,
+      "source": 2
+    }
+  ]
+}
