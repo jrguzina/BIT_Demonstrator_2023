@@ -35,7 +35,7 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
-  fl_chart: ^0.41.0
+  fl_chart: ^0.64.0
   model_viewer_plus: ^1.6.0
   syncfusion_flutter_charts: ^20.3.42
   scaled_list: ^2.0.0
@@ -70,6 +70,7 @@ flutter:
     - 'assets/background_green.jpg'
     - 'assets/materialien.png'
     - 'assets/Format2.glb'
+    - 'assets/boschcamera'
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
