@@ -73,11 +73,13 @@ class StartPage extends StatelessWidget {
               child: Align(
                 alignment: Alignment.center,
                 child: Container(
+                  width: MediaQuery.of(context).size.width * 0.8, // 80% der Bildschirmbreite
+                  height: MediaQuery.of(context).size.height * 0.8, // 80% der Bildschirmhöhe
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: Colors.white.withOpacity(0.2),
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.black.withOpacity(0.5),
+                        color: Colors.black.withOpacity(0.05),
                         blurRadius: 10,
                         spreadRadius: 2,
                       ),
