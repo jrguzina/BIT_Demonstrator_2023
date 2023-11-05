@@ -539,15 +539,15 @@
   "buffers": [
     {
       "byteLength": 1213104,
-      "uri": "scene.bin"
+      "uri": "assets/boschcamera/scene.bin"
     }
   ],
   "images": [
     {
-      "uri": "textures/Cover_baseColor.jpeg"
+      "uri": "assets/boschcamera/textures/Cover_baseColor.jpeg"
     },
     {
-      "uri": "textures/Mesh_metallicRoughness.png"
+      "uri": "assets/boschcamera/textures/Mesh_metallicRoughness.png"
     }
   ],
   "materials": [
