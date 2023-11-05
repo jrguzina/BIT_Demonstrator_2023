@@ -70,7 +70,6 @@ flutter:
     - 'assets/background_green.jpg'
     - 'assets/materialien.png'
     - 'assets/Format2.glb'
-    - 'assets/boschcamera'
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
