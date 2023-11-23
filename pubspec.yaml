@@ -68,6 +68,8 @@ flutter:
     - assets/Format2.glb
     - assets/boschcamera/
     - assets/bosch_camera_model.glb
+    - assets/phone_mockup.png
+    - assets/smart_home.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

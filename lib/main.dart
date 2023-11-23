@@ -454,41 +454,40 @@ class TransportationPage extends StatelessWidget {
   }
 }
 
+
+
 class CO2FootprintPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('CO2 Footprint'),
-      ),
-      body: Stack(
-        children: [
-          Image.asset(
-            'assets/background_green.jpg',
-            fit: BoxFit.cover,
-            width: double.infinity,
-            height: double.infinity,
-          ),
-          Center(
-            child: Container(
-              width: double.infinity,
-              height: double.infinity,
-              margin: EdgeInsets.all(25.0),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(50.0),
+        appBar: AppBar(
+          title: Text('CO2 Footprint'),
+        ),
+        body: Row(
+            children:[
+              Container(
+                width: 300,
+                height: 1250,
+                margin: EdgeInsets.all(25.0),
+
+                child: Stack(
+                    alignment: Alignment.topCenter,
+                    children: [
+                      Image.asset(
+                          'assets/phone_mockup.png',
+                          fit: BoxFit.contain),
+                      MySwitch()
+                    ]
+                ),
               ),
-            ),
-          ),
-          ListView(
-            scrollDirection: Axis.horizontal,
-                children: customCO2Boxes,
-            )
-        ]
-            ),
-          );
+              Container(
+                  child: Image.asset('assets/smart_home.png')),
+            ]
+        )
+    );
   }
 }
+
 
 class Tile extends StatelessWidget {
   final String title;
@@ -529,170 +528,317 @@ class Tile extends StatelessWidget {
   }
 }
 
-class CustomCO2Box extends StatelessWidget {
-  final String title;
-  final String content;
-  final Color colour;
-  final Icon icon;
-  final Widget? diagram;
 
-  CustomCO2Box(
-      {required this.title,
-      required this.content,
-      required this.icon,
-      this.colour = Colors.white,
-      this.diagram});
+SmartHomeGadget _thermostat = SmartHomeGadget(
+  name: 'Thermostat',
+  price: 100.0,
+  comfort: 5,
+  security: 3,
+  energyConsumption: 65.0,
+  carbonFootprint: 12,
+);
+SmartHomeGadget _inneKamera = SmartHomeGadget(
+  name: 'Thermostat',
+  price: 100.0,
+  comfort: 5,
+  security: 3,
+  energyConsumption: 50.0,
+  carbonFootprint: 12,
+);
+SmartHomeGadget _aussenKamera = SmartHomeGadget(
+  name: 'Thermostat',
+  price: 100.0,
+  comfort: 5,
+  security: 3,
+  energyConsumption: 15.0,
+  carbonFootprint: 12,
+);
+SmartHomeGadget _fensterkontakt = SmartHomeGadget(
+  name: 'Thermostat',
+  price: 100.0,
+  comfort: 5,
+  security: 3,
+  energyConsumption: 30.0,
+  carbonFootprint: 12,
+);
+SmartHomeGadget _lichtsteuerung = SmartHomeGadget(
+  name: 'Thermostat',
+  price: 100.0,
+  comfort: 5,
+  security: 3,
+  energyConsumption: 10.0,
+  carbonFootprint: 12,
+);
+SmartHomeGadget _schloss = SmartHomeGadget(
+  name: 'Schloss',
+  price: 100.0,
+  comfort: 5,
+  security: 3,
+  energyConsumption: 20.0,
+  carbonFootprint: 12,
+);
+class MySwitch extends StatefulWidget {
+  @override
+  MySwitchState createState() => MySwitchState();
+}
+
+class MySwitchState extends State<MySwitch>  {
+  bool _thermostatValue = false;
+  bool _inneKameraValue = false;
+  bool _aussenKameraValue = false;
+  bool _fensterkontaktValue = false;
+  bool _lichtsteuerungValue = false;
+  bool _schlossValue = false;
+
+  bool getThermostatStatus() => _thermostatValue;
+  bool getInnekameraStatus() => _inneKameraValue;
+  bool getAussenkameraStatus() => _aussenKameraValue;
+  bool getFensterkontaktStatus() => _fensterkontaktValue;
+  bool getLichtsteuerungStatus() => _lichtsteuerungValue;
+  bool getSchlossStatus() => _schlossValue;
+
+  List<bool> getAllGadgetsStatus() {
+    return [
+      getThermostatStatus(),
+      getInnekameraStatus(),
+      getAussenkameraStatus(),
+      getFensterkontaktStatus(),
+      getLichtsteuerungStatus(),
+      getSchlossStatus(),
+    ];
+  }
+
+
+  List<SmartHomeGadget> gadgets = [_thermostat, _inneKamera, _aussenKamera, _lichtsteuerung, _fensterkontakt, _schloss];
+
+  double getResource(resource) {
+    double result = 0;
+    List<bool> status = getAllGadgetsStatus();
+    for (var i = 0; i < gadgets.length; i++) {
+      if (status[i] == true) {
+        if (resource == "energyConsumption") {
+          result += gadgets[i].energyConsumption;
+        }
+        if (resource == "carbonFootprint") {
+          result += gadgets[i].carbonFootprint;
+        }
+        if (resource == "price") {
+          result += gadgets[i].price;
+        }
+        if (resource == "security") {
+          result += gadgets[i].security;
+        }
+        if (resource == "comfort") {
+          result += gadgets[i].comfort;
+        }
+      }
+    }
+    return result;
+  }
+
+
+
+  double getFullResource(resource) {
+    double result = 0;
+    for (var i = 0; i < gadgets.length; i++) {
+      if (resource == "energyConsumption") {
+        result += gadgets[i].energyConsumption;
+      }
+      if (resource == "carbonFootprint") {
+        result += gadgets[i].carbonFootprint;
+      }
+      if (resource == "price") {
+        result += gadgets[i].price;
+      }
+      if (resource == "security") {
+        result += gadgets[i].security;
+      }
+      if (resource == "comfort") {
+        result += gadgets[i].comfort;
+      }
+    }
+    return result;
+  }
+
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(180),
-      child: Container(
-        decoration: BoxDecoration(
-          color: colour,
-          borderRadius: BorderRadius.circular(10.0),
-          boxShadow: [
-            BoxShadow(
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        SwitchListTile(
+          title: Text('Thermostat'),
+          secondary: Icon(Icons.thermostat),
+          value: _thermostatValue,
+          onChanged: (bool value) {
+            setState(() {
+              _thermostatValue = value;
+            });
+          },
+        ),
+        SwitchListTile(
+          title: Text('Innekamera'),
+          secondary: Icon(Icons.camera_indoor),
+          value: _inneKameraValue,
+          onChanged: (bool value) {
+            setState(() {
+              _inneKameraValue = value;
+            });
+          },
+        ),
+        SwitchListTile(
+          title: Text('Außenkamera'),
+          secondary: Icon(Icons.camera_outdoor),
+          value: _aussenKameraValue,
+          onChanged: (bool value) {
+            setState(() {
+              _aussenKameraValue = value;
+            });
+          },
+        ),
+        SwitchListTile(
+          title: Text('Fensterkontakt'),
+          secondary: Icon(Icons.window),
+          value: _fensterkontaktValue,
+          onChanged: (bool value) {
+            setState(() {
+              _fensterkontaktValue = value;
+            });
+          },
+        ),
+        SwitchListTile(
+          title: Text('Lichtsteuerung'),
+          secondary: Icon(Icons.light),
+          value: _lichtsteuerungValue,
+          onChanged: (bool value) {
+            setState(() {
+              _lichtsteuerungValue = value;
+            });
+          },
+        ),
+        SwitchListTile(
+          title: Text('Schloss'),
+          secondary: Icon(Icons.lock),
+          value: _schlossValue,
+          onChanged: (bool value) {
+            setState(() {
+              _schlossValue = value;
+            }
+            );
+          },
+        ),
+        SizedBox(height: 250),
+        Text(
+          'Energy Consumption per Day',
+          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+        ),
+        LinearProgressIndicator(
+          value:  (getResource("energyConsumption")/getFullResource("energyConsumption")),// Assuming the price is a percentage of 100
+          backgroundColor: Colors.cyan.shade300,  // Color of the background of the progress bar.
+          valueColor: AlwaysStoppedAnimation<Color>(Colors.cyan.shade900),  // Color of the progress in the progress bar
+          minHeight: 20,
+          borderRadius: BorderRadius.circular(10),
+        ),
 
-              color: Colors.black.withOpacity(0.5),
-              spreadRadius: 2,
-              blurRadius: 5,
-              offset: const Offset(0, 3),
+        Text(
+          '${getResource("energyConsumption").round()} kwH',  // Convert the progress to percentage and round it
+          style: TextStyle(fontSize: 18.0),
+        ),
+        SizedBox(height: 40),
+        Text(
+          'Carbon Footprint over Product-Lifespan',
+          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+        ),
+        LinearProgressIndicator(
+          value:  (getResource("carbonFootprint")/getFullResource("carbonFootprint")),// Assuming the price is a percentage of 100
+          backgroundColor: Colors.brown.shade200,  // Color of the background of the progress bar.
+          valueColor: AlwaysStoppedAnimation<Color>(Colors.brown),  // Color of the progress in the progress bar
+          minHeight: 20,
+          borderRadius: BorderRadius.circular(10),
+        ),
+
+        Text(
+          '${getResource("carbonFootprint").round()} tons of CO2',  // Convert the progress to percentage and round it
+          style: TextStyle(fontSize: 18.0),
+        ),
+
+        SizedBox(height: 40),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: <Widget>[
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                SizedBox(width: 60, height: 60,child:
+                CircularProgressIndicator(
+                  value:getResource("security")/getFullResource("security"),
+                  backgroundColor: Colors.lightBlueAccent.shade100,
+                  strokeCap: StrokeCap.round,
+                  color: Colors.blue,
+                  strokeWidth: 10,)
+                ),
+                SizedBox(height: 20),
+                Text('Security'),
+              ],
+            ),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                SizedBox(width: 60, height: 60, child:
+                CircularProgressIndicator(
+                  value: getResource("comfort")/getFullResource("comfort"),
+                  backgroundColor: Colors.lightBlueAccent.shade100,
+                  strokeCap: StrokeCap.round,
+                  color: Colors.blue,
+                  strokeWidth: 10,)
+                ),
+                SizedBox(height: 20),
+                Text('Comfort'),
+              ],
             ),
           ],
         ),
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Row(
-                children: <Widget>[
-                  icon,
-                  Text(
-                    title,
-                    style:
-                        TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
-                  ),
-                ],
-              ),
-              SizedBox(height: 10),
-              Text(content),
-              SizedBox(height: 10),
-              if (diagram != null) diagram!,
-            ],
-          ),
+        SizedBox(height: 40),
+        Text(
+          'Price',
+          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
         ),
-      ),
+        LinearProgressIndicator(
+          value:  (getResource("price")/getFullResource("price")),// Assuming the price is a percentage of 100
+          backgroundColor: Colors.lightGreen.shade300,  // Color of the background of the progress bar.
+          valueColor: AlwaysStoppedAnimation<Color>(Colors.lightGreen.shade900),  // Color of the progress in the progress bar
+          minHeight: 20,
+          borderRadius: BorderRadius.circular(10),
+        ),
+        Text(
+          '${(getResource("price")).round()} Euros',  // Convert the progress to percentage and round it
+          style: TextStyle(fontSize: 18.0),
+        ),
+      ],
     );
   }
 }
 
+class SmartHomeGadget {
+  String name;
+  double price;
+  int comfort;
+  int security;
+  double energyConsumption;
+  double carbonFootprint;
+
+  SmartHomeGadget({
+    required this.name,
+    required this.price,
+    required this.comfort,
+    required this.security,
+    required this.energyConsumption,
+    required this.carbonFootprint,
+  }
+  );
+}
 
 
-RotatedBox customCO2BoxWheel = RotatedBox(
-  quarterTurns: 3,
-  child: ListWheelScrollView(
-    //controller: FixedExtentScrollController(),
-    itemExtent: 600,
-    diameterRatio: 5,
-    //magnification: 1,
-    //offAxisFraction:0.5 ,
-    //overAndUnderCenterOpacity: 0.5,
-    //perspective: 0.001,
-    //squeeze: 1,
-    physics: const BouncingScrollPhysics(),
-    children: customCO2Boxes.map((box) {
-      return Transform.rotate(
-        angle: pi / 2 + pi / 180 * 0.5,
-        child: box,
-      );
-    }).toList(),
-  ),
-);
-
-List<CustomCO2Box> customCO2Boxes = [
-  CustomCO2Box(
-    title: 'CO2-Emissionen während der Herstellung',
-    content: 'Informationen über die CO2-Emissionen während der Herstellung',
-    colour: Color(0xFFc3c3c3),
-    icon: Icon(Icons.factory),
-    diagram: Container(
-      height: 200,
-      width: 200,
-      child:PieChart(
-      PieChartData(
-        sections: [
-          PieChartSectionData(
-            color: Colors.green,
-            title: 'Manufacturing',
-            value: 40,
-          ),
-          PieChartSectionData(
-            color: Colors.blue,
-            title: 'Distribution',
-            value: 30,
-          ),
-          PieChartSectionData(
-            color: Colors.yellow,
-            title: 'Design',
-            value: 20,
-          ),
-          PieChartSectionData(
-            color: Colors.orange,
-            title: 'Quality Control',
-            value: 10,
-          ),
-        ],
-        sectionsSpace: 0,
-        centerSpaceRadius: 40,
-        borderData: FlBorderData(
-          show: false,
-        ),
-      ),
-
-      ),
-    ),
-  ),
-  CustomCO2Box(
-    title: 'CO2-Emissionen während des Transports',
-    content: 'Informationen über die CO2-Emissionen während des Transports',
-    colour: Color(0xFFc3c3c3),
-    icon: Icon(Icons.local_shipping),
-  ),
-  CustomCO2Box(
-    title: 'CO2-Emissionen während des Betriebs',
-    content: 'Informationen über die CO2-Emissionen während des Betriebs',
-    colour: Color(0xFFc3c3c3),
-    icon: Icon(Icons.electric_bolt),
-  ),
-  CustomCO2Box(
-    title: 'CO2-Emissionen während des Recyclings',
-    content: 'Informationen über die ',
-    colour: Color(0xFFc3c3c3),
-    icon: Icon(Icons.recycling),
-  ),
-
-  CustomCO2Box(
-    title: 'Maßnahmen zur Reduzierung von Emissionen',
-    content: 'Tipps und Informationen zur Reduzierung von Emissionen...',
-    colour: Color(0xFFc3c3c3),
-    icon: Icon(Icons.battery_saver),
-  ),
-  CustomCO2Box(
-    title: 'Kompensationsmöglichkeiten',
-    content:
-        'Informationen über Möglichkeiten zur Kompensation von CO2-Emissionen...',
-    colour: Color(0xFFB8BC86),
-    icon: Icon(Icons.energy_savings_leaf),
-  ),
-  CustomCO2Box(
-    title: 'Tipps zur nachhaltigen Nutzung',
-    content: 'Tipps zur nachhaltigen Nutzung des Smart-Home-Produkts...',
-    colour: Color(0xFFB8BC86),
-    icon: Icon(Icons.forest),
-  ),
-];
 
 
 //test
