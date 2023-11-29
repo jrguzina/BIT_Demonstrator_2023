@@ -736,8 +736,7 @@ class MySwitchState extends State<MySwitch>  {
           value:  (getResource("energyConsumption")/getFullResource("energyConsumption")),// Assuming the price is a percentage of 100
           backgroundColor: Colors.cyan.shade300,  // Color of the background of the progress bar.
           valueColor: AlwaysStoppedAnimation<Color>(Colors.cyan.shade900),  // Color of the progress in the progress bar
-          minHeight: 20,
-          borderRadius: BorderRadius.circular(10),
+          minHeight: 20
         ),
 
         Text(
@@ -753,8 +752,7 @@ class MySwitchState extends State<MySwitch>  {
           value:  (getResource("carbonFootprint")/getFullResource("carbonFootprint")),// Assuming the price is a percentage of 100
           backgroundColor: Colors.brown.shade200,  // Color of the background of the progress bar.
           valueColor: AlwaysStoppedAnimation<Color>(Colors.brown),  // Color of the progress in the progress bar
-          minHeight: 20,
-          borderRadius: BorderRadius.circular(10),
+          minHeight: 20
         ),
 
         Text(
@@ -773,7 +771,6 @@ class MySwitchState extends State<MySwitch>  {
                 CircularProgressIndicator(
                   value:getResource("security")/getFullResource("security"),
                   backgroundColor: Colors.lightBlueAccent.shade100,
-                  strokeCap: StrokeCap.round,
                   color: Colors.blue,
                   strokeWidth: 10,)
                 ),
@@ -788,7 +785,6 @@ class MySwitchState extends State<MySwitch>  {
                 CircularProgressIndicator(
                   value: getResource("comfort")/getFullResource("comfort"),
                   backgroundColor: Colors.lightBlueAccent.shade100,
-                  strokeCap: StrokeCap.round,
                   color: Colors.blue,
                   strokeWidth: 10,)
                 ),
@@ -807,8 +803,7 @@ class MySwitchState extends State<MySwitch>  {
           value:  (getResource("price")/getFullResource("price")),// Assuming the price is a percentage of 100
           backgroundColor: Colors.lightGreen.shade300,  // Color of the background of the progress bar.
           valueColor: AlwaysStoppedAnimation<Color>(Colors.lightGreen.shade900),  // Color of the progress in the progress bar
-          minHeight: 20,
-          borderRadius: BorderRadius.circular(10),
+          minHeight: 20
         ),
         Text(
           '${(getResource("price")).round()} Euros',  // Convert the progress to percentage and round it
