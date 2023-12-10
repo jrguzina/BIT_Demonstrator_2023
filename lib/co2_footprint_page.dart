@@ -286,26 +286,26 @@ class MySwitchState extends State<MySwitch> {
             ,  // Use BoxFit.fill if you want the image to fill the entire space
           ),
           Positioned(
-            top: 556,
-            left: 600,
+            top: 640,
+            left: 510,
             child: AnimatedOpacity(
               opacity: _thermostatValue ? 1.0 : 0.0,
               duration: Duration(seconds: 1),
-              child: Image.asset('assets/thermostat.png',height: 80,),
+              child: Image.asset('assets/thermostat.png',height: 40,),
             ),
           ),
           Positioned(
-            top: 320,
-            left: 315,
+            top: 625,
+            left: 245,
             child: AnimatedOpacity(
               opacity: _inneKameraValue ? 1.0 : 0.0,
               duration: Duration(seconds: 1),
-              child: Image.asset('assets/indoor_camera_s.png',height: 80,),
+              child: Image.asset('assets/indoor_camera_s.png',height: 50,),
             ),
           ),
           Positioned(
-            top: 500,
-            left: 500,
+            top: 480,
+            left: 92,
             child: AnimatedOpacity(
               opacity: _aussenKameraValue ? 1.0 : 0.0,
               duration: Duration(seconds: 1),
@@ -314,29 +314,29 @@ class MySwitchState extends State<MySwitch> {
           ),
           Positioned(
             top: 498,
-            left: 436,
+            left: 168,
             child: AnimatedOpacity(
               opacity: _fensterkontaktValue ? 1.0 : 0.0,
               duration: Duration(seconds: 1),
-              child: Image.asset('assets/window_contact.png',height: 80,),
+              child: Image.asset('assets/window_contact.png',height: 50,),
             ),
           ),
           Positioned(
-            top: 20,
-            left: 300,
+            top: 410,
+            left: 615,
             child: AnimatedOpacity(
               opacity: _lichtsteuerungValue ? 1.0 : 0.0,
               duration: Duration(seconds: 1),
-              child: Image.asset('assets/lamp.png',height: 300,),
+              child: Image.asset('assets/lamp.png',height: 150,),
             ),
           ),
           Positioned(
-            top: 50,
-            left: 100,
+            top: 603,
+            left: 357,
             child: AnimatedOpacity(
               opacity: _schlossValue ? 1.0 : 0.0,
               duration: Duration(seconds: 1),
-              child: Image.asset('assets/lock.png',height: 80,),
+              child: Image.asset('assets/lock.png',height: 55,),
             ),
           ),
         ],
