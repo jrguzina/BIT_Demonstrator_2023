@@ -63,16 +63,20 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/background_green.jpg
+
     - assets/materialien.png
     - assets/Format2.glb
     - assets/boschcamera/
     - assets/bosch_camera_model.glb
     - assets/phone_mockup.png
-    - assets/smart_home.png
-    - assets/ai_home.jpg
-    - assets/ai_home_1.jpg
-    - assets/ai_home_2.jpg
+
+    - assets/indoor_camera_s.png
+    - assets/outdoor_camera.png
+    - assets/lock.png
+    - assets/window_contact.png
+    - assets/lamp.png
+    - assets/thermostat.png
+    - assets/home.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
