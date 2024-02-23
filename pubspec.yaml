@@ -39,6 +39,7 @@ dependencies:
   model_viewer_plus: ^1.6.0
   syncfusion_flutter_charts: ^20.3.42
   scaled_list: ^2.0.0
+  countries_world_map: ^1.1.1
 
 dev_dependencies:
   flutter_test:
