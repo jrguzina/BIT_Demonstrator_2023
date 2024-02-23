@@ -17,7 +17,7 @@ class _TransportationPageState extends State<TransportationPage>  {
 
 
   final legendItems = [
-    LegendItem(color: Colors.redAccent, text: "Research and Developement"),
+    LegendItem(color: Colors.redAccent, text: "R&D"),
     LegendItem(color: Colors.yellowAccent, text: "Ressources"),
     LegendItem(color: Colors.greenAccent, text: "Assembly"),
     LegendItem(color: Colors.blueAccent, text: "Distribution"),
@@ -112,8 +112,10 @@ class _TransportationPageState extends State<TransportationPage>  {
                   'Basierend darauf zeigt die Karte die Herkunft der unterschiedlichen Komponenten, sowie deren Transportwege und Verarbeitungsschritte in der Lieferkette.',
             ),
             SizedBox(height: 20.0),
-            Row(children:[
-              Container(width: 300,child:
+            Row(children:<Widget>[
+              Flexible(
+                flex:1,
+                child:
               Column( mainAxisAlignment: MainAxisAlignment.center,
                 children: [Image.asset('assets/thermostat.png',height: 80,),
                   SwitchListTile(
@@ -155,8 +157,8 @@ class _TransportationPageState extends State<TransportationPage>  {
                   ),],
               ),
               ),
-              Container(
-                width:1250,
+              Flexible(
+                flex:5,
                 child: InteractiveViewer(
                   minScale: 0.8,
                   maxScale: 10,
@@ -171,8 +173,8 @@ class _TransportationPageState extends State<TransportationPage>  {
                   },
                 ),
               ),),
-              Container(
-                width: 300,
+              Flexible(
+                flex: 1,
                 child: LegendWidget(
                     items: legendItems),
               )
