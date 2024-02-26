@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:model_viewer_plus/model_viewer_plus.dart';
 
 
 class ResourceUsagePage extends StatelessWidget {
@@ -47,6 +48,17 @@ class ResourceUsagePage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
+              Container(
+                height: 300, // Passen Sie die Höhe nach Bedarf an
+                child: ModelViewer(
+                  src: 'assets/bosch_camera_model.glb',
+                  autoPlay: true,
+                  backgroundColor: Colors.transparent,
+                  cameraControls: true,
+                  autoRotate: true,
+                ),
+              ),
+              SizedBox(height: 20.0),
               // Grid-Ansicht der Elemente
               GridView.builder(
                 shrinkWrap: true,
