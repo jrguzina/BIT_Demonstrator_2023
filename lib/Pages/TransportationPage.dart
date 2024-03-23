@@ -10,8 +10,8 @@ class TransportationPage extends StatefulWidget {
   _TransportationPageState createState() => _TransportationPageState();
 }
 
-// Corrected: This should be a State class, not a StatelessWidget.
 class _TransportationPageState extends State<TransportationPage> {
+  late MapShapeLayerController _controller;
   bool ressources = false;
   bool rd = false;
   bool production = false;
@@ -23,95 +23,181 @@ class _TransportationPageState extends State<TransportationPage> {
 
   Color _mapColorToUse = Colors.grey;
 
-  final Set<MapMarker> _thermostatMarkers = {
-    MapMarker(
-      latitude: 46.2276,
-      longitude: 2.2137,
-      child: Icon(Icons.location_on, color: Colors.red), // Example marker icon
-    ),
-  };
-
   final Set<MapArc> _ressorceArcCamera = {
-    // From France to India
-    MapArc(
-      from: MapLatLng(46.2276, 2.2137), // Latitude and longitude of France
-      to: MapLatLng(20.5937, 78.9629), // Latitude and longitude of India
-      color: Colors.blue,
+    const MapArc(
+      from: MapLatLng(46.2276, 2.2137),
+      to: MapLatLng(20.5937, 78.9629),
+      color: Colors.redAccent,
       width: 2,
     ),
-    // From Hong Kong to India
-    MapArc(
-      from: MapLatLng(22.3193, 114.1694), // Latitude and longitude of Hong Kong
-      to: MapLatLng(20.5937, 78.9629), // Latitude and longitude of India
-      color: Colors.blue,
+    const MapArc(
+      from: MapLatLng(22.3193, 114.1694),
+      to: MapLatLng(20.5937, 78.9629),
+      color: Colors.redAccent,
       width: 2,
     ),
-    // From Japan to India
-    MapArc(
-      from: MapLatLng(36.2048, 138.2529), // Latitude and longitude of Japan
-      to: MapLatLng(20.5937, 78.9629), // Latitude and longitude of India
-      color: Colors.blue,
+    const MapArc(
+      from: MapLatLng(36.2048, 138.2529),
+      to: MapLatLng(20.5937, 78.9629),
+      color: Colors.redAccent,
       width: 2,
     ),
-    // From Egypt to India
-    MapArc(
-      from: MapLatLng(26.8206, 30.8025), // Latitude and longitude of Egypt
-      to: MapLatLng(20.5937, 78.9629), // Latitude and longitude of India
-      color: Colors.blue,
+    const MapArc(
+      from: MapLatLng(26.8206, 30.8025),
+      to: MapLatLng(20.5937, 78.9629),
+      color: Colors.redAccent,
       width: 2,
     ),
-    // From Chile to India
-    MapArc(
-      from: MapLatLng(-35.6751, -71.5430), // Latitude and longitude of Chile
-      to: MapLatLng(20.5937, 78.9629), // Latitude and longitude of India
-      color: Colors.blue,
+    const MapArc(
+      from: MapLatLng(-35.6751, -71.5430),
+      to: MapLatLng(20.5937, 78.9629),
+      color: Colors.redAccent,
       width: 2,
     ),
   };
 
-  final Set<MapArc> _ressourcesArcThermostat = {
-    // From Congo to China
-    MapArc(
-      from: MapLatLng(-4.0383, 21.7587), // Latitude and longitude of Congo
-      to: MapLatLng(35.8617, 104.1954), // Latitude and longitude of China
-      color: Colors.blue,
-      width: 2,
-    ),
-    // From Argentina to China
-    MapArc(
-      from:
-          MapLatLng(-38.4161, -63.6167), // Latitude and longitude of Argentina
-      to: MapLatLng(35.8617, 104.1954), // Latitude and longitude of China
-      color: Colors.blue,
-      width: 2,
-    ),
-    // From USA to China
-    MapArc(
-      from: MapLatLng(37.0902, -95.7129), // Latitude and longitude of the USA
-      to: MapLatLng(35.8617, 104.1954), // Latitude and longitude of China
-      color: Colors.blue,
-      width: 2,
-    ),
-    // From South Africa to China
-    MapArc(
-      from: MapLatLng(
-          -30.5595, 22.9375), // Latitude and longitude of South Africa
-      to: MapLatLng(35.8617, 104.1954), // Latitude and longitude of China
-      color: Colors.blue,
-      width: 2,
-    ),
-    // From Australia to China
-    MapArc(
-      from:
-          MapLatLng(-25.2744, 133.7751), // Latitude and longitude of Australia
-      to: MapLatLng(35.8617, 104.1954), // Latitude and longitude of China
-      color: Colors.blue,
+  final Set<MapArc> _logsticsArcCamera = {
+    const MapArc(
+      from: MapLatLng(20.5937, 78.9629), // India
+      to: MapLatLng(51.1657, 10.4515), // Germany
+      color: Colors.greenAccent,
       width: 2,
     ),
   };
+  final Set<MapArc> _salesArcCamera = {
+    const MapArc(
+      from: MapLatLng(51.1657, 10.4515), // Germany
+      to: MapLatLng(46.8182, 8.2275),    // Switzerland
+      color: Colors.blueAccent,
+      width: 2,
+    ),
+    const MapArc(
+      from: MapLatLng(51.1657, 10.4515), // Germany
+      to: MapLatLng(55.3781, -3.4360),   // Great Britain
+      color: Colors.blueAccent,
+      width: 2,
+    ),
+    const MapArc(
+      from: MapLatLng(51.1657, 10.4515), // Germany
+      to: MapLatLng(40.4637, -3.7492),   // Spain
+      color: Colors.blueAccent,
+      width: 2,
+    ),
+    const MapArc(
+      from: MapLatLng(51.1657, 10.4515), // Germany
+      to: MapLatLng(41.8719, 12.5674),   // Italy
+      color: Colors.blueAccent,
+      width: 2,
+    ),
+  };
+
+  late List<MarkerData> _data;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = MapShapeLayerController();
+    updateMarkerData(); // Call the new method here
+  }
+
+  void updateMarkerData() {
+    if (ressources && stateB) {
+      _data = <MarkerData>[
+        MarkerData(
+            latitude: 22.3193,
+            longitude: 114.1694,
+            tooltipMessage: 'Hong Kong'),
+        MarkerData(
+            latitude: 36.2048, longitude: 138.2529, tooltipMessage: 'Japan'),
+        MarkerData(
+            latitude: 26.8206, longitude: 30.8025, tooltipMessage: 'Egypt'),
+        MarkerData(
+            latitude: -35.6751, longitude: -71.5430, tooltipMessage: 'Chile'),
+        MarkerData(
+          latitude: 46.603354,
+          longitude: 1.888334,
+          tooltipMessage: 'France',
+        ),
+        MarkerData(
+          latitude: 20.5937,
+          longitude: 78.9629,
+          tooltipMessage: 'India',
+        )
+      ];
+    } else if (sales && stateB) {
+      _data = <MarkerData>[
+        MarkerData(
+            latitude: 46.8182,
+            longitude: 8.2275,
+            tooltipMessage: 'Switzerland'),
+        MarkerData(
+            latitude: 55.3781,
+            longitude: -3.4360,
+            tooltipMessage: 'Great Britain'),
+        MarkerData(
+            latitude: 40.4637, longitude: -3.7492, tooltipMessage: 'Spain'),
+        MarkerData(
+            latitude: 41.8719, longitude: 12.5674, tooltipMessage: 'Italy'),
+        MarkerData(
+          latitude: 51.1657,
+          longitude: 10.4515,
+          tooltipMessage: 'Germany',
+        ),
+      ];
+    } else if (production && stateB) {
+      _data = <MarkerData>[
+        MarkerData(
+            latitude: 28.6139, longitude: 77.2090, tooltipMessage: 'India'),
+
+      ];
+    } else if (rd && stateB) {
+      _data = <MarkerData>[
+        MarkerData(
+          latitude: 51.1657,
+          longitude: 10.4515,
+          tooltipMessage: 'Germany',
+        ),
+        MarkerData(
+          latitude: 20.5937,
+          longitude: 78.9629,
+          tooltipMessage: 'India',
+        )
+      ];
+    } else {
+      _data = <MarkerData>[
+        MarkerData(
+            latitude: 22.3193,
+            longitude: 114.1694,
+            tooltipMessage: 'Hong Kong'),
+        MarkerData(
+            latitude: 36.2048, longitude: 138.2529, tooltipMessage: 'Japan'),
+        MarkerData(
+            latitude: 26.8206, longitude: 30.8025, tooltipMessage: 'Egypt'),
+        MarkerData(
+            latitude: -35.6751, longitude: -71.5430, tooltipMessage: 'Chile'),
+        MarkerData(
+          latitude: 46.603354,
+          longitude: 1.888334,
+          tooltipMessage: 'France',
+        ),
+        MarkerData(
+          latitude: 20.5937,
+          longitude: 78.9629,
+          tooltipMessage: 'India',
+        )
+      ];
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
+    print("*****************************************");
+    print('Active markers count: ${_data.length}');
+    print('Ressources. ${ressources}');
+    print('RD. ${rd}');
+    print('Production. ${production}');
+    print('Sales. ${sales}');
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Transportation'),
@@ -122,7 +208,7 @@ class _TransportationPageState extends State<TransportationPage> {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            Text(
+            const Text(
               'Auswirkungen auf Transport und Mobilität',
               style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
             ),
@@ -143,19 +229,21 @@ class _TransportationPageState extends State<TransportationPage> {
                 child: SfMaps(
                   layers: [
                     MapShapeLayer(
+                      initialMarkersCount: _data.length,
+                      color: _mapColorToUse,
+                      controller: _controller,
                       markerBuilder: (BuildContext context, int index) {
                         return MapMarker(
-                          latitude: 46.2276,
-                          longitude: 2.2137,
+                          latitude: _data[index].latitude,
+                          longitude: _data[index].longitude,
                           child: Tooltip(
-                            message: 'Paris',
-                            child: Icon(Icons.location_on,
+                            message: _data[index].tooltipMessage,
+                            child: const Icon(Icons.location_on,
                                 size: 20, color: Colors.red),
                           ),
                         );
                       },
-                      initialMarkersCount: 1,
-                      color: _mapColorToUse,
+
                       loadingBuilder: (BuildContext context) {
                         return const SizedBox(
                           height: 25,
@@ -182,11 +270,11 @@ class _TransportationPageState extends State<TransportationPage> {
                           MapTooltipSettings(color: _mapColorToUse),
                       sublayers: [
                         MapArcLayer(
-                          arcs: stateA && ressources
-                              ? _ressourcesArcThermostat
-                              : stateB || stateC && ressources
-                                  ? _ressorceArcCamera
-                                  : <MapArc>{}, // This is directly using the variable
+                          arcs: stateB && ressources
+                              ? _ressorceArcCamera
+                              : stateB && rd
+                                  ? _logsticsArcCamera
+                                  : stateB && sales? _salesArcCamera:<MapArc>{},
                         )
                       ],
                     ),
@@ -208,10 +296,17 @@ class _TransportationPageState extends State<TransportationPage> {
                         onPressed: () {
                           setState(() {
                             ressources = true;
+                            rd = false;
                             sales = false;
                             production = false;
-                            rd = false;
-                            _mapColorToUse = Colors.red[200]!;
+                            updateMarkerData();
+                            _controller.clearMarkers();
+                            _controller.insertMarker(0);
+                            _controller.insertMarker(1);
+                            _controller.insertMarker(2);
+                            _controller.insertMarker(3);
+                            _controller.insertMarker(4);
+                            _controller.insertMarker(5);
                           });
                         },
                       ),
@@ -230,13 +325,16 @@ class _TransportationPageState extends State<TransportationPage> {
                           setState(() {
                             ressources = false;
                             rd = true;
-                            production = false;
                             sales = false;
-                            _mapColorToUse = Colors.green[200]!;
+                            production = false;
+                            updateMarkerData();
+                            _controller.clearMarkers();
+                            _controller.insertMarker(0);
+                            _controller.insertMarker(1);
                           });
                         },
                       ),
-                      Text("R&D")
+                      Text("Logistics")
                     ]),
                 SizedBox(width: 20),
                 Column(
@@ -250,9 +348,12 @@ class _TransportationPageState extends State<TransportationPage> {
                           setState(() {
                             ressources = false;
                             rd = false;
-                            production = true;
                             sales = false;
-                            _mapColorToUse = Colors.brown[200]!;
+                            production = true;
+                            updateMarkerData();
+                            _controller.clearMarkers();
+                            _controller.insertMarker(0);
+
                           });
                         },
                       ),
@@ -270,9 +371,15 @@ class _TransportationPageState extends State<TransportationPage> {
                           setState(() {
                             ressources = false;
                             rd = false;
-                            production = false;
                             sales = true;
-                            _mapColorToUse = Colors.blue[200]!;
+                            production = false;
+                            updateMarkerData();
+                            _controller.clearMarkers();
+                            _controller.insertMarker(0);
+                            _controller.insertMarker(1);
+                            _controller.insertMarker(2);
+                            _controller.insertMarker(3);
+                            _controller.insertMarker(4);
                           });
                         },
                       ),
@@ -289,75 +396,96 @@ class _TransportationPageState extends State<TransportationPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  /* Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Image.asset(
-                            'assets/thermostat.png',
-                            height: 80, width: 80
-                          ),
-                          Container(width: 250, child:
-                          SwitchListTile(
-                            title: Text('Thermostat'),
-                            value: stateA,
-                            onChanged: (bool value) {
-                              setState(() {
-                                stateA = true;
-                                stateB = false;
-                                stateC = false;
-                              });
-                            },
-                          ),
-                          ),],
+                  ElevatedButton(
+                    onPressed: () {},
+                    style: ButtonStyle(
+                      backgroundColor:
+                          MaterialStateProperty.all<Color>(Colors.grey[200]!),
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(
+                              80.0), // Adjust the value as needed
+                        ),
                       ),
+                    ),
+                    child: Image.asset(
+                      'assets/outdoor_camera.png',
+                      height: 100,
+                      width: 100,
+                    ),
+                  ),
+                  SizedBox(
+                    width: 20,
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      setState(
+                        () {
+                          stateB = !stateB;
+                        },
+                      );
+                    },
+                    style: ButtonStyle(
+                      backgroundColor:
+                          MaterialStateProperty.all<Color>(Colors.grey[200]!),
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(
+                              80.0), // Adjust the value as needed
+                        ),
+                      ),
+                    ),
+                    child: Image.asset(
+                      'assets/indoor_camera_s.png',
+                      height: 100,
+                      width: 100,
+                    ),
+                  ),
+                  SizedBox(
+                    width: 20,
+                  ),
+                  ElevatedButton(
+                    onPressed: () {},
+                    style: ButtonStyle(
+                      backgroundColor:
+                          MaterialStateProperty.all<Color>(Colors.grey[200]!),
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(
+                              80.0), // Adjust the value as needed
+                        ),
+                      ),
+                    ),
+                    child: Image.asset(
+                      'assets/thermostat.png',
+                      height: 100,
+                      width: 100,
+                    ),
+                  ),
 
-                      Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Image.asset(
-                              'assets/indoor_camera_s.png',
-                              height: 80, width: 80
-                            ),Container(width:250, child:
-                            SwitchListTile(
-                              title: Text('Indoor Kamera'),
-                              value: stateB,
-                              onChanged: (bool value) {
-                                setState(() {
-                                  stateB = true;
-                                  stateA = false;
-                                  stateC = false;
-                                });
-                              },
-                            ),
-                            ), ]),*/
-
-                  Column(
+                  /* Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Image.asset(
-                        'assets/outdoor_camera.png',
+                        'assets/indoor_camera_s.png',
                         height: 80,
                         width: 80,
                       ),
                       Container(
                         width: 250,
                         child: SwitchListTile(
-                          title: Text('Outdoor Kamera'),
+                          title: Text('Indoor Kamera'),
                           value: stateC,
                           onChanged: (bool value) {
                             setState(() {
-                              stateC = true;
-                              stateA = false;
-                              stateB = false;
+                              stateC = value;
                             });
                           },
                         ),
                       ),
                     ],
-                  ),
+                  ),*/
                 ],
               ),
             ),
@@ -366,4 +494,15 @@ class _TransportationPageState extends State<TransportationPage> {
       ),
     );
   }
+}
+
+class MarkerData {
+  final double latitude;
+  final double longitude;
+  final String tooltipMessage;
+
+  MarkerData(
+      {required this.latitude,
+      required this.longitude,
+      required this.tooltipMessage});
 }
