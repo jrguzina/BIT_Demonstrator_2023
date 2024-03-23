@@ -59,11 +59,21 @@ class _TransportationPageState extends State<TransportationPage> {
   final Set<MapArc> _logsticsArcCamera = {
     const MapArc(
       from: MapLatLng(20.5937, 78.9629), // India
-      to: MapLatLng(51.1657, 10.4515), // Germany
+      to: MapLatLng(45.9432, 24.9668),
       color: Colors.greenAccent,
       width: 2,
     ),
   };
+
+  final Set<MapArc> _assemblyArcCamera = {
+    const MapArc(
+      from:  MapLatLng(45.9432, 24.9668),
+      to: MapLatLng(51.1657, 10.4515),
+      color: Colors.brown,
+      width: 2,
+    ),
+  };
+
   final Set<MapArc> _salesArcCamera = {
     const MapArc(
       from: MapLatLng(51.1657, 10.4515), // Germany
@@ -101,7 +111,7 @@ class _TransportationPageState extends State<TransportationPage> {
   }
 
   void updateMarkerData() {
-    if (ressources && stateB) {
+    if (ressources ) {
       _data = <MarkerData>[
         MarkerData(
             latitude: 22.3193,
@@ -114,49 +124,40 @@ class _TransportationPageState extends State<TransportationPage> {
         MarkerData(
             latitude: -35.6751, longitude: -71.5430, tooltipMessage: 'Chile'),
         MarkerData(
-          latitude: 46.603354,
-          longitude: 1.888334,
-          tooltipMessage: 'France',
-        ),
-        MarkerData(
-          latitude: 20.5937,
-          longitude: 78.9629,
-          tooltipMessage: 'India',
-        )
+          latitude: 46.603354, longitude: 1.888334, tooltipMessage: 'France',),
+        MarkerData(latitude: 20.5937, longitude: 78.9629, tooltipMessage: 'India',)
       ];
-    } else if (sales && stateB) {
+    } else if (sales ) {
       _data = <MarkerData>[
         MarkerData(
-            latitude: 46.8182,
-            longitude: 8.2275,
-            tooltipMessage: 'Switzerland'),
+            latitude: 46.8182, longitude: 8.2275, tooltipMessage: 'Switzerland'),
         MarkerData(
-            latitude: 55.3781,
-            longitude: -3.4360,
-            tooltipMessage: 'Great Britain'),
+            latitude: 55.3781, longitude: -3.4360, tooltipMessage: 'Great Britain'),
         MarkerData(
             latitude: 40.4637, longitude: -3.7492, tooltipMessage: 'Spain'),
         MarkerData(
             latitude: 41.8719, longitude: 12.5674, tooltipMessage: 'Italy'),
         MarkerData(
-          latitude: 51.1657,
-          longitude: 10.4515,
-          tooltipMessage: 'Germany',
+          latitude: 51.1657, longitude: 10.4515, tooltipMessage: 'Germany',
         ),
       ];
-    } else if (production && stateB) {
+    } else if (production ) {
       _data = <MarkerData>[
         MarkerData(
-            latitude: 28.6139, longitude: 77.2090, tooltipMessage: 'India'),
-
-      ];
-    } else if (rd && stateB) {
-      _data = <MarkerData>[
-        MarkerData(
-          latitude: 51.1657,
-          longitude: 10.4515,
-          tooltipMessage: 'Germany',
+          latitude: 45.9432,
+          longitude: 24.9668,
+          tooltipMessage: 'Romania',
+        ),MarkerData(
+          latitude: 51.1657, longitude: 10.4515, tooltipMessage: 'Germany',
         ),
+      ];
+    } else if (rd ) {
+      _data = <MarkerData>[
+    MarkerData(
+    latitude: 45.9432,
+    longitude: 24.9668,
+    tooltipMessage: 'Romania',
+    ),
         MarkerData(
           latitude: 20.5937,
           longitude: 78.9629,
@@ -270,11 +271,9 @@ class _TransportationPageState extends State<TransportationPage> {
                           MapTooltipSettings(color: _mapColorToUse),
                       sublayers: [
                         MapArcLayer(
-                          arcs: stateB && ressources
-                              ? _ressorceArcCamera
-                              : stateB && rd
-                                  ? _logsticsArcCamera
-                                  : stateB && sales? _salesArcCamera:<MapArc>{},
+                          arcs: stateB && ressources ? _ressorceArcCamera :
+                          stateB && rd ? _logsticsArcCamera
+                                  : stateB&&production?_assemblyArcCamera: stateB && sales? _salesArcCamera:<MapArc>{},
                         )
                       ],
                     ),
@@ -311,7 +310,7 @@ class _TransportationPageState extends State<TransportationPage> {
                         },
                       ),
                       SizedBox(width: 20),
-                      Text("Ressources")
+                      Text("Ressources-Production")
                     ]),
                 SizedBox(width: 20),
                 Column(
@@ -319,7 +318,7 @@ class _TransportationPageState extends State<TransportationPage> {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       IconButton(
-                        icon: Icon(Icons.lightbulb),
+                        icon: Icon(Icons.factory),
                         color: Colors.green[200],
                         onPressed: () {
                           setState(() {
@@ -334,7 +333,7 @@ class _TransportationPageState extends State<TransportationPage> {
                           });
                         },
                       ),
-                      Text("Logistics")
+                      Text("Production-Assembly")
                     ]),
                 SizedBox(width: 20),
                 Column(
@@ -353,11 +352,11 @@ class _TransportationPageState extends State<TransportationPage> {
                             updateMarkerData();
                             _controller.clearMarkers();
                             _controller.insertMarker(0);
-
+                            _controller.insertMarker(1);
                           });
                         },
                       ),
-                      Text("Production")
+                      Text("Assembly-Logistics")
                     ]),
                 SizedBox(width: 20),
                 Column(
@@ -383,7 +382,7 @@ class _TransportationPageState extends State<TransportationPage> {
                           });
                         },
                       ),
-                      Text("Sales")
+                      Text("Logistics-Sales")
                     ]),
               ],
             ),
@@ -397,7 +396,12 @@ class _TransportationPageState extends State<TransportationPage> {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      setState(() {
+
+                      });
+
+                    },
                     style: ButtonStyle(
                       backgroundColor:
                           MaterialStateProperty.all<Color>(Colors.grey[200]!),
@@ -445,7 +449,11 @@ class _TransportationPageState extends State<TransportationPage> {
                     width: 20,
                   ),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      setState(() {
+
+                      });
+                    },
                     style: ButtonStyle(
                       backgroundColor:
                           MaterialStateProperty.all<Color>(Colors.grey[200]!),
