@@ -493,7 +493,7 @@ class _TransportationPageState extends State<TransportationPage> {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       IconButton(
-                        icon: Icon(Icons.factory),
+                        icon: Icon(Icons.precision_manufacturing),
                         color: Colors.green[200],
                         onPressed: () {
                           setState(() {
