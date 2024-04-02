@@ -81,14 +81,14 @@ class _TransportationPageState extends State<TransportationPage> {
      MapArc(
        from: MapLatLng(20.5937, 78.9629), // India
   to: MapLatLng(45.9432, 24.9668),
-      color: Colors.green[200]!, width: 2,
+      color: Colors.brown[200]!, width: 2,
     ),
   };
 
   final Set<MapArc> _productionArcThermostat = {
     MapArc(
       from: MapLatLng(38.9072, -77.0369), to: MapLatLng(34.0522, -118.2437),
-      color: Colors.green[200]!, width: 2,
+      color: Colors.brown[200]!, width: 2
     ),
   };
 
@@ -96,76 +96,60 @@ class _TransportationPageState extends State<TransportationPage> {
      MapArc(
        from: MapLatLng(45.9432, 24.9668), // India
   to: MapLatLng(51.1657, 10.4515),
-      color: Colors.brown[200]!, width: 2,
+      color: Colors.green[200]!, width: 2,
     ),
   };
 
   final Set<MapArc> _assemblyArcThermostat = {
     MapArc(
       from:  MapLatLng(34.0522, -118.2437), to: MapLatLng(46.8182, 8.2275),
-      color: Colors.brown[200]!, width: 2,
+      color: Colors.green[200]!, width: 2,
     ),
   };
   final Set<MapArc> _logisticsArcCamera = {
      MapArc(
-      from: MapLatLng(51.1657, 10.4515), // Germany
-      to: MapLatLng(46.8182, 8.2275),    // Switzerland
-      color: Colors.blue[200]!,
-      width: 2,
+      from: MapLatLng(51.1657, 10.4515), to: MapLatLng(46.8182, 8.2275),
+      color: Colors.blue[200]!, width: 2,
     ),
      MapArc(
-      from: MapLatLng(51.1657, 10.4515), // Germany
-      to: MapLatLng(55.3781, -3.4360),   // Great Britain
-      color: Colors.blue[200]!,
-      width: 2,
+      from: MapLatLng(51.1657, 10.4515), to: MapLatLng(55.3781, -3.4360),
+      color: Colors.blue[200]!, width: 2,
     ),
      MapArc(
-      from: MapLatLng(51.1657, 10.4515), // Germany
-      to: MapLatLng(40.4637, -3.7492),   // Spain
-      color: Colors.blue[200]!,
-      width: 2,
+      from: MapLatLng(51.1657, 10.4515), to: MapLatLng(40.4637, -3.7492),
+      color: Colors.blue[200]!, width: 2,
     ),
      MapArc(
-      from: MapLatLng(51.1657, 10.4515), // Germany
-      to: MapLatLng(41.8719, 12.5674),   // Italy
-      color: Colors.blue[200]!,
-      width: 2,
+      from: MapLatLng(51.1657, 10.4515), to: MapLatLng(41.8719, 12.5674),
+      color: Colors.blue[200]!, width: 2,
     ),
   };
 
   final Set<MapArc> _logisticsArcThermostat = {
      MapArc(
       from: MapLatLng(46.8182, 8.2275), to: MapLatLng(46.8182, 8.2275),
-      color: Colors.blue[200]!, width: 2,
-    ),
+      color: Colors.blue[200]!, width: 2,),
      MapArc(
       from: MapLatLng(46.8182, 8.2275), to: MapLatLng(37.5665, 126.9780),
-      color: Colors.blue[200]!, width: 2,
-    ),
+      color: Colors.blue[200]!, width: 2,),
      MapArc(
       from: MapLatLng(46.8182, 8.2275), to: MapLatLng(35.6895, 139.6917),
-
-       color: Colors.blue[200]!, width: 2,
-    ),
+       color: Colors.blue[200]!, width: 2,),
      MapArc(
       from: MapLatLng(46.8182, 8.2275), to: MapLatLng(52.5200, 13.4050),
-
-       color: Colors.blue[200]!, width: 2,
-    ),
+       color: Colors.blue[200]!, width: 2,),
     MapArc(
       from: MapLatLng(46.8182, 8.2275), to: MapLatLng(51.5074, -0.1278),
-      color: Colors.blue[200]!, width: 2,
-    ),
+      color: Colors.blue[200]!, width: 2,),
     MapArc(
       from: MapLatLng(46.8182, 8.2275), to: MapLatLng(-35.2809, 149.1300),
-      color: Colors.blue[200]!, width: 2,
-    ),MapArc(
+      color: Colors.blue[200]!, width: 2,),
+    MapArc(
       from: MapLatLng(46.8182, 8.2275), to: MapLatLng(41.8719, 12.5674),
-      color: Colors.blue[200]!, width: 2,
-    ),MapArc(
+      color: Colors.blue[200]!, width: 2,),
+    MapArc(
       from: MapLatLng(46.8182, 8.2275), to: MapLatLng(55.7558, 37.6176),
-      color: Colors.blue[200]!, width: 2,
-    ),
+      color: Colors.blue[200]!, width: 2,),
   };
 
 
@@ -180,45 +164,47 @@ class _TransportationPageState extends State<TransportationPage> {
     if (_resourcesFlag&&_indoorcamFlag) {
       _data = <MarkerData>[
         MarkerData(
-            latitude: 22.3193, longitude: 114.1694, country: 'Hong Kong', function: 'Resources', description: 'Cobalt, Alloy, Silicon', colour: Colors.red),
+            latitude: 22.3193, longitude: 114.1694, country: 'Hong Kong', function: 'Resources', description: 'Cobalt, Alloy, Silicon', colour: Colors.red, icon:  Icon(Icons.apps, color: Colors.red,size: 20)),
         MarkerData(
-            latitude: 36.2048, longitude: 138.2529, country: 'Japan', function: 'Resources', description: 'Copper', colour: Colors.red),
+            latitude: 36.2048, longitude: 138.2529, country: 'Japan', function: 'Resources', description: 'Copper', colour: Colors.red, icon:  Icon(Icons.apps, color: Colors.red,size: 20)),
         MarkerData(
-            latitude: 26.8206, longitude: 30.8025, country: 'Egypt', function: 'Resources', description: 'Aluminium, Gold', colour: Colors.red),
+            latitude: 26.8206, longitude: 30.8025, country: 'Egypt', function: 'Resources', description: 'Aluminium, Gold', colour: Colors.red, icon:  Icon(Icons.apps, color: Colors.red,size: 20)),
         MarkerData(
-            latitude: -35.6751, longitude: -71.5430, country: 'Chile', function: 'Resources', description: 'Copper, Silver', colour: Colors.red),
+            latitude: -35.6751, longitude: -71.5430, country: 'Chile', function: 'Resources', description: 'Copper, Silver', colour: Colors.red, icon:  Icon(Icons.apps, color: Colors.red,size: 20)),
         MarkerData(
-          latitude: 46.603354, longitude: 1.888334, country: 'France', function: 'Resources', description: 'Gold', colour: Colors.red),
-        MarkerData(latitude: 20.5937, longitude: 78.9629, country: 'India',function: 'Prdoduction', colour: Colors.red)
+          latitude: 46.603354, longitude: 1.888334, country: 'France', function: 'Resources', description: 'Gold', colour: Colors.red, icon:  Icon(Icons.apps, color: Colors.red,size: 20)),
+        MarkerData(latitude: 20.5937, longitude: 78.9629, country: 'India',function: 'Prdoduction', colour: Colors.red, icon:  Icon(Icons.precision_manufacturing, color: Colors.brown ,size: 20))
       ];
     } else if (_logisticsFlag&&_indoorcamFlag) {
       _data = <MarkerData>[
         MarkerData(
-            latitude: 46.8182, longitude: 8.2275, country: 'Switzerland', function: 'Sales', colour: Colors.blue),
+            latitude: 46.8182, longitude: 8.2275, country: 'Switzerland', function: 'Sales', colour: Colors.blue, icon:  Icon(Icons.sell, color: Colors.orange, size: 20),),
         MarkerData(
-            latitude: 55.3781, longitude: -3.4360, country: 'Great Britain', function: 'Sales', colour: Colors.blue),
+            latitude: 55.3781, longitude: -3.4360, country: 'Great Britain', function: 'Sales', colour: Colors.blue, icon:  Icon(Icons.sell, color: Colors.orange, size: 20),),
         MarkerData(
-            latitude: 40.4637, longitude: -3.7492, country: 'Spain', function: 'Sales', colour: Colors.blue),
+            latitude: 40.4637, longitude: -3.7492, country: 'Spain', function: 'Sales', colour: Colors.blue, icon:  Icon(Icons.sell, color: Colors.orange, size: 20),),
         MarkerData(
-            latitude: 41.8719, longitude: 12.5674, country: 'Italy', function: 'Sales', colour: Colors.blue),
+            latitude: 41.8719, longitude: 12.5674, country: 'Italy', function: 'Sales', colour: Colors.blue, icon:  Icon(Icons.sell, color: Colors.orange, size: 20),),
         MarkerData(
-          latitude: 51.1657, longitude: 10.4515, country: 'Germany', function: 'Logistics', colour: Colors.blue
+          latitude: 51.1657, longitude: 10.4515, country: 'Germany', function: 'Logistics', colour: Colors.blue, icon:  Icon(Icons.local_shipping, color: Colors.blue, size: 20),
         ),
       ];
     } else if (_assemblyFlag&&_indoorcamFlag) {
       _data = <MarkerData>[
         MarkerData(latitude: 45.9432, longitude: 24.9668,
-          country: 'Romania', function: 'Assembly', colour: Colors.brown),
+          country: 'Romania', function: 'Assembly', colour: Colors.brown, icon:  Icon(Icons.factory, color: Colors.green,size: 20), ),
         MarkerData(
-          latitude: 51.1657, longitude: 10.4515, country: 'Germany', function: 'Logistics', colour: Colors.brown
+          latitude: 51.1657, longitude: 10.4515, country: 'Germany', function: 'Logistics',
+          colour: Colors.blue, icon:  Icon(Icons.local_shipping, color: Colors.blue, size: 20),
         ),
       ];
     } else if (_productionFlag&&_indoorcamFlag) {
       _data = <MarkerData>[
-    MarkerData(latitude: 45.9432, longitude: 24.9668, country: 'Romania', function: 'Assembly', colour: Colors.green
+    MarkerData(latitude: 45.9432, longitude: 24.9668, country: 'Romania', function: 'Assembly',
+      colour: Colors.green, icon:  Icon(Icons.factory, color: Colors.green, size: 20),
     ),
         MarkerData(latitude: 20.5937, longitude: 78.9629,
-          country: 'India', function: 'Production', colour: Colors.green
+          country: 'India', function: 'Production', colour: Colors.green, icon:  Icon(Icons.precision_manufacturing, color: Colors.brown, size: 20),
         )
       ];
     } else if (_resourcesFlag&&_thermostatFlag) {
@@ -226,42 +212,42 @@ class _TransportationPageState extends State<TransportationPage> {
         latitude: 38.9072, longitude: -77.0369, // USA
         country: 'USA', function: 'Production',
       // Adjust as needed
-        colour: Colors.red,
+        colour: Colors.red, icon:  Icon(Icons.precision_manufacturing, color: Colors.brown,size: 20)
       ),
 
         MarkerData(
           latitude: -4.0383, longitude: 21.7587, // Democratic Republic of the Congo
           country: 'Congo', function: 'Resources',
           description: 'Cobalt, Copper, Diamonds',
-          colour: Colors.red,
+          colour: Colors.red, icon:  Icon(Icons.apps, color: Colors.red,size: 20)
         ),
 
         MarkerData(
           latitude: -30.5595, longitude: 22.9375, // South Africa
           country: 'South Africa', function: 'Resources',
           description: 'Gold, Diamonds, Platinum',
-          colour: Colors.red,
+          colour: Colors.red, icon:  Icon(Icons.apps, color: Colors.red,size: 20)
         ),
 
         MarkerData(
           latitude: 61.5240, longitude: 105.3188, // Russia
           country: 'Russia', function: 'Resources',
           description: 'Natural Gas, Oil, Coal',
-          colour: Colors.red,
+          colour: Colors.red, icon:  Icon(Icons.apps, color: Colors.red,size: 20)
         ),
 
         MarkerData(
           latitude: 38.9637, longitude: 35.2433, // Türkiye
           country: 'Türkiye', function: 'Resources',
           description: 'Boron, Marble, Chromium',
-          colour: Colors.red,
+          colour: Colors.red, icon:  Icon(Icons.apps, color: Colors.red,size: 20)
         ),
 
         MarkerData(
           latitude: -14.2350, longitude: -51.9253, // Brazil
           country: 'Brazil', function: 'Resources',
           description: 'Iron Ore, Gold, Oil',
-          colour: Colors.red,
+          colour: Colors.red, icon:  Icon(Icons.apps, color: Colors.red,size: 20)
         ),];
 
     }
@@ -270,14 +256,14 @@ class _TransportationPageState extends State<TransportationPage> {
         latitude: 38.9072, longitude: -77.0369, // Washington, D.C.
         country: 'USA - Washington, D.C.', function: 'Production',
 
-        colour: Colors.green,
+        colour: Colors.green, icon:  Icon(Icons.precision_manufacturing, color: Colors.brown,size: 20)
       ),
 
         MarkerData(
           latitude: 34.0522, longitude: -118.2437, // Los Angeles
           country: 'USA - Los Angeles', function: 'Assembly',
 
-          colour: Colors.green,
+          colour: Colors.green, icon:  Icon(Icons.factory, color: Colors.green,size: 20)
         ),];
 
     }
@@ -286,14 +272,13 @@ class _TransportationPageState extends State<TransportationPage> {
         latitude: 34.0522, longitude: -118.2437, // Los Angeles
         country: 'USA - Los Angeles', function: 'Assembly',
 
-        colour: Colors.brown,
+        colour: Colors.brown, icon:  Icon(Icons.factory, color: Colors.green,size: 20)
       ),
 
         MarkerData(
           latitude: 46.8182, longitude: 8.2275, // Switzerland
           country: 'Switzerland', function: 'Logistics',
-
-          colour: Colors.brown,
+          colour: Colors.brown, icon:  Icon(Icons.local_shipping, color: Colors.blue, size: 20),
         ),];
 
     }
@@ -302,50 +287,48 @@ class _TransportationPageState extends State<TransportationPage> {
         latitude: 46.8182, longitude: 8.2275, // Switzerland
         country: 'Switzerland', function: 'Logistics',
 
-        colour: Colors.blue,
+        colour: Colors.blue, icon:  Icon(Icons.local_shipping, color: Colors.blue, size: 20),
       ),
 
         MarkerData(
           latitude: 37.5665, longitude: 126.9780, // South Korea
           country: 'South Korea', function: 'Sales',
-          colour: Colors.blue,
+          colour: Colors.blue, icon:  Icon(Icons.sell, color: Colors.orange, size: 20),
         ),
 
         MarkerData(
           latitude: 52.5200, longitude: 13.4050, // Germany
           country: 'Germany', function: 'Sales',
-          colour: Colors.blue,
+          colour: Colors.blue, icon:  Icon(Icons.sell, color: Colors.orange, size: 20),
         ),
 
         MarkerData(
           latitude: 41.9028, longitude: 12.4964, // Italy
           country: 'Italy', function: 'Sales',
-          colour: Colors.blue,
+          colour: Colors.blue, icon:  Icon(Icons.sell, color: Colors.orange, size: 20),
         ),
 
         MarkerData(
           latitude: -35.2809, longitude: 149.1300, // Australia, Canberra
           country: 'Australia', function: 'Sales',
-          colour: Colors.blue,
+          colour: Colors.blue, icon:  Icon(Icons.sell, color: Colors.orange, size: 20),
         ),
 
         MarkerData(
           latitude: 55.7558, longitude: 37.6176, // Moscow, Russia
           country: 'Russia', function: 'Sales',
-          colour: Colors.blue
+          colour: Colors.blue, icon:  Icon(Icons.sell, color: Colors.orange, size: 20),
         ),
 
         MarkerData(
           latitude: 51.5074, longitude: -0.1278, // London, UK
           country: 'UK', function: 'Sales',
-
-          colour: Colors.blue,
+          colour: Colors.blue, icon:  Icon(Icons.sell, color: Colors.orange, size: 20),
         ),
         MarkerData(
           latitude: 35.6895, longitude: 139.6917, // Tokyo, Japan
           country: 'Japan', function: 'Sales',
-
-          colour: Colors.blue,
+          colour: Colors.blue, icon:  Icon(Icons.sell, color: Colors.orange, size: 20),
         ),
       ];
 
@@ -355,14 +338,24 @@ class _TransportationPageState extends State<TransportationPage> {
     }
   }
 
+  List<Map<String, String>> _resourceArcData = [
+    {
+      "Transportierte Ressourcen": "Details about the flight to Canberra.",
+
+      "Entfernung in km": "1000",
+      "Transportmittel": "Flugzeug",
+    },
+    {
+
+      "Transportierte Ressourcen": "Details about the flight to Canberra.",
+      "Entfernung in km": "1500",
+      "Transportmittel": "Flugzeug",
+    },
+    // Add more entries for each arc you have
+  ];
+
   @override
   Widget build(BuildContext context) {
-    print("*****************************************");
-    print('Active markers count: ${_data.length}');
-    print('Ressources. ${_resourcesFlag}');
-    print('RD. ${_productionFlag}');
-    print('Production. ${_assemblyFlag}');
-    print('Sales. ${_logisticsFlag}');
 
     return Scaffold(
       appBar: AppBar(
@@ -387,17 +380,18 @@ class _TransportationPageState extends State<TransportationPage> {
             ),
             SizedBox(height: 20.0),
             Flexible(
-              flex: 5,
+              flex: 10,
               child: InteractiveViewer(
                 minScale: 0.8,
-                maxScale: 10,
-                boundaryMargin: const EdgeInsets.all(20),
+                maxScale: 15,
+                boundaryMargin: const EdgeInsets.all(10),
                 child: SfMaps(
                   layers: [
                     MapShapeLayer(
                       initialMarkersCount: _data.length,
                       color: _mapColorToUse,
                       controller: _controller,
+
                       markerBuilder: (BuildContext context, int index) {
                         String tooltipMessage = '${_data[index].country}\n${_data[index].function}';
                         if (_data[index].description.isNotEmpty) {
@@ -409,10 +403,7 @@ class _TransportationPageState extends State<TransportationPage> {
                           child: Tooltip(
                             message: tooltipMessage,
                             textAlign: TextAlign.center,
-
-
-                            child:  Icon(Icons.location_on,
-                                size: 20, color: _data[index].colour),
+                            child:  _data[index].icon,
                           ),
                         );
                       },
@@ -431,16 +422,8 @@ class _TransportationPageState extends State<TransportationPage> {
                         shapeDataField: "name",
                       ),
                       strokeColor: Colors.grey,
-                      strokeWidth:
-                          0.5, // Customization for the map border lines
-                      shapeTooltipBuilder: (BuildContext context, int index) {
-                        return const Padding(
-                          padding: EdgeInsets.all(2.0),
-                          child: Text('Custom Tooltip'),
-                        );
-                      },
-                      tooltipSettings:
-                          MapTooltipSettings(color: _mapColorToUse),
+                      strokeWidth: 0.5, // Customization for the map border lines
+
                       sublayers: [
                         MapArcLayer(
                           arcs: _indoorcamFlag && _resourcesFlag ? _resourceArcCamera :
@@ -452,6 +435,39 @@ class _TransportationPageState extends State<TransportationPage> {
                               _thermostatFlag && _assemblyFlag ? _assemblyArcThermostat:
                               _thermostatFlag && _logisticsFlag ? _logisticsArcThermostat:
                           <MapArc>{},
+                          tooltipBuilder: (BuildContext context, int index) {
+                            print(index);
+                            var currentArcData = _indoorcamFlag && _resourcesFlag ? _resourceArcData[index]:  {
+                              "Transportierte Ressourcen": "TODO",
+                              "Entfernung in km": "TODO",
+                              "Transportmittel": "TODO",
+                            } ;
+                            return Container(
+                              padding: EdgeInsets.all(2),
+                              height: 120,
+                              width: 200,
+                              child:  Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Row(children:[
+                                  Text("Transportierte Ressourcen: ", style: TextStyle(fontWeight: FontWeight.bold)),
+                                  Text(currentArcData["Transportierte Ressourcen"]!, style: TextStyle(fontWeight: FontWeight.bold)),]),
+                                  SizedBox(height: 8),
+                                  Row(children:[
+                                  Text("Entfernung in km: "),
+                                    Text(currentArcData["Entfernung in km"]!, style: TextStyle(fontWeight: FontWeight.bold)),]),
+
+                                  SizedBox(height: 8),
+                            Row(children:[
+                                  Text("Transportmittel: "),
+                                  if (currentArcData["Transportmittel"] == "Flugzeug") Icon(Icons.airplanemode_active),
+                                  if (currentArcData["Transportmittel"] == "Zug") Icon(Icons.train),
+                                  if (currentArcData["Transportmittel"] == "LKW") Icon(Icons.fire_truck),]),
+                                  //Text(currentArcData["Entfernung"]!),
+                                ],
+                              ),
+                            );
+                          },
                         )
                       ],
                     ),
@@ -468,7 +484,8 @@ class _TransportationPageState extends State<TransportationPage> {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       IconButton(
-                        icon: Icon(Icons.reorder),
+                        icon: Image.asset('assets/counter_1.png'),
+                        iconSize:20,
                         color: Colors.red[200],
                         onPressed: () {
                           setState(() {
@@ -493,7 +510,8 @@ class _TransportationPageState extends State<TransportationPage> {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       IconButton(
-                        icon: Icon(Icons.precision_manufacturing),
+                        icon: Image.asset('assets/counter_2.png'),
+                        iconSize:20,
                         color: Colors.green[200],
                         onPressed: () {
                           setState(() {
@@ -517,7 +535,8 @@ class _TransportationPageState extends State<TransportationPage> {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       IconButton(
-                        icon: Icon(Icons.factory),
+                        icon: Image.asset('assets/counter_3.png'),
+                        iconSize:20,
                         color: Colors.brown[200],
                         onPressed: () {
                           setState(() {
@@ -541,7 +560,8 @@ class _TransportationPageState extends State<TransportationPage> {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       IconButton(
-                        icon: Icon(Icons.sell),
+                        icon: Image.asset('assets/counter_4.png'),
+                        iconSize:20,
                         color: Colors.blue[200],
                         onPressed: () {
                           setState(() {
@@ -571,33 +591,6 @@ class _TransportationPageState extends State<TransportationPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                /*  ElevatedButton(
-                    onPressed: () {
-                      setState(() {
-                        _outdoorCamFlag = true;
-                        _indoorCamFlag = false;
-                        _thermostatFlag = false;
-                      });
-                    },
-                    style: ButtonStyle(
-                      backgroundColor:
-                          MaterialStateProperty.all<Color>(Colors.grey[200]!),
-                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                        RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(
-                              80.0), // Adjust the value as needed
-                        ),
-                      ),
-                    ),
-                    child: Image.asset(
-                      'assets/outdoor_camera.png',
-                      height: 150,
-                      width: 150,
-                    ),
-                  ),
-                  SizedBox(
-                    width: 20,
-                  ),*/
                   ElevatedButton(
                     onPressed: () {
                       setState(
@@ -679,7 +672,8 @@ class MarkerData {
   final String country;
   final String function;
   final Color colour;
-   String description;
+  final Icon icon;
+  String description;
 
 
   MarkerData(
@@ -689,6 +683,7 @@ class MarkerData {
         required this.country,
         required this.function,
         required this.colour,
+        required this.icon,
         this.description =''
       });
 }

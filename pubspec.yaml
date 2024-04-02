@@ -78,6 +78,7 @@ flutter:
     - assets/thermostat.png
     - assets/home.png
     - assets/world_map.json
+    - assets/
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
