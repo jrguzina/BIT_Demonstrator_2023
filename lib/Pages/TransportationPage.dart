@@ -31,7 +31,7 @@ class _TransportationPageState extends State<TransportationPage> {
     ),
      MapArc(
       from: MapLatLng(22.3193, 114.1694), to: MapLatLng(20.5937, 78.9629),
-      color: Colors.red[200]!, width: 2,
+      color: Colors.red[200]!, width: 6,
     ),
      MapArc(
       from: MapLatLng(36.2048, 138.2529), to: MapLatLng(20.5937, 78.9629),
@@ -39,11 +39,11 @@ class _TransportationPageState extends State<TransportationPage> {
     ),
      MapArc(
       from: MapLatLng(26.8206, 30.8025), to: MapLatLng(20.5937, 78.9629),
-      color: Colors.red[200]!, width: 2,
+      color: Colors.red[200]!, width: 4,
     ),
      MapArc(
       from: MapLatLng(-35.6751, -71.5430), to: MapLatLng(20.5937, 78.9629),
-      color: Colors.red[200]!, width: 2,
+      color: Colors.red[200]!, width: 8,
     ),
   };
 
@@ -51,12 +51,12 @@ class _TransportationPageState extends State<TransportationPage> {
     MapArc(
       from: MapLatLng(-4.0383, 21.7587), // Democratic Republic of the Congo
       to: MapLatLng(38.9072, -77.0369), // USA, Washington D.C.
-      color: Colors.red[200]!, width: 2,
+      color: Colors.red[200]!, width: 6,
     ),
     MapArc(
       from: MapLatLng(-30.5595, 22.9375), // South Africa
       to: MapLatLng(38.9072, -77.0369), // USA, Washington D.C.
-      color: Colors.red[200]!, width: 2,
+      color: Colors.red[200]!, width: 6,
     ),
     MapArc(
       from: MapLatLng(-14.2350, -51.9253), // Brazil
@@ -66,12 +66,12 @@ class _TransportationPageState extends State<TransportationPage> {
     MapArc(
       from: MapLatLng(61.5240, 105.3188), // Russia
       to: MapLatLng(38.9072, -77.0369), // USA, Washington D.C.
-      color: Colors.red[200]!, width: 2,
+      color: Colors.red[200]!, width: 4,
     ),
     MapArc(
       from: MapLatLng(38.9637, 35.2433), // Türkiye
       to: MapLatLng(38.9072, -77.0369), // USA, Washington D.C.
-      color: Colors.red[200]!, width: 2,
+      color: Colors.red[200]!, width: 4,
     ),
   };
 
@@ -164,15 +164,15 @@ class _TransportationPageState extends State<TransportationPage> {
     if (_resourcesFlag&&_indoorcamFlag) {
       _data = <MarkerData>[
         MarkerData(
-            latitude: 22.3193, longitude: 114.1694, country: 'Hong Kong', function: 'Resources', description: 'Cobalt, Alloy, Silicon', colour: Colors.red, icon:  Icon(Icons.apps, color: Colors.red,size: 20)),
+            latitude: 22.3193, longitude: 114.1694, country: 'Hong Kong', function: 'Resources', colour: Colors.red, icon:  Icon(Icons.apps, color: Colors.red,size: 20)),
         MarkerData(
-            latitude: 36.2048, longitude: 138.2529, country: 'Japan', function: 'Resources', description: 'Copper', colour: Colors.red, icon:  Icon(Icons.apps, color: Colors.red,size: 20)),
+            latitude: 36.2048, longitude: 138.2529, country: 'Japan', function: 'Resources', colour: Colors.red, icon:  Icon(Icons.apps, color: Colors.red,size: 20)),
         MarkerData(
-            latitude: 26.8206, longitude: 30.8025, country: 'Egypt', function: 'Resources', description: 'Aluminium, Gold', colour: Colors.red, icon:  Icon(Icons.apps, color: Colors.red,size: 20)),
+            latitude: 26.8206, longitude: 30.8025, country: 'Egypt', function: 'Resources', colour: Colors.red, icon:  Icon(Icons.apps, color: Colors.red,size: 20)),
         MarkerData(
-            latitude: -35.6751, longitude: -71.5430, country: 'Chile', function: 'Resources', description: 'Copper, Silver', colour: Colors.red, icon:  Icon(Icons.apps, color: Colors.red,size: 20)),
+            latitude: -35.6751, longitude: -71.5430, country: 'Chile', function: 'Resources', colour: Colors.red, icon:  Icon(Icons.apps, color: Colors.red,size: 20)),
         MarkerData(
-          latitude: 46.603354, longitude: 1.888334, country: 'France', function: 'Resources', description: 'Gold', colour: Colors.red, icon:  Icon(Icons.apps, color: Colors.red,size: 20)),
+          latitude: 46.603354, longitude: 1.888334, country: 'France', function: 'Resources', colour: Colors.red, icon:  Icon(Icons.apps, color: Colors.red,size: 20)),
         MarkerData(latitude: 20.5937, longitude: 78.9629, country: 'India',function: 'Prdoduction', colour: Colors.red, icon:  Icon(Icons.precision_manufacturing, color: Colors.brown ,size: 20))
       ];
     } else if (_logisticsFlag&&_indoorcamFlag) {
@@ -338,24 +338,193 @@ class _TransportationPageState extends State<TransportationPage> {
     }
   }
 
-  List<Map<String, String>> _resourceArcData = [
+  List<Map<String, String>> _resourceArcDataIndoorcamera = [
     {
-      "Transportierte Ressourcen": "Details about the flight to Canberra.",
+      "von":"France",
+      "nach":"India",
+      "Transportierte Ressourcen": "Gold",
+      "Entfernung in km": "6800",
+      "Transportmittel": "LKW",
+    },
+    {
+      "von":"Hong Kong",
+      "nach":"India",
+      "Transportierte Ressourcen": "Cobalt, Alloy, Silicon",
+      "Entfernung in km": "3900",
+      "Transportmittel": "Zug",
+    },
+    {
+      "von":"Japan",
+      "nach":"India",
+      "Transportierte Ressourcen": "Copper",
+      "Entfernung in km": "5600",
+      "Transportmittel": "Flugzeug",
+    },
+    {
+      "von":"Egypt",
+      "nach":"India",
+      "Transportierte Ressourcen": "Aluminium, Gold",
+      "Entfernung in km": "4400",
+      "Transportmittel": "Flugzeug",
+    },
+    {
+      "von":"Chile",
+      "nach":"India",
+      "Transportierte Ressourcen": "Copper, Silver, Silicon, Bromium",
+      "Entfernung in km": "16500",
+      "Transportmittel": "Schiff",
+    },
+  ];
 
+  List<Map<String, String>> _resourceArcDataThermostat = [
+    {
+      "von":"Congo",
+      "nach":"USA, Washington, D.C.",
+      "Transportierte Ressourcen": "Cobalt, Copper, Diamonds",
+      "Entfernung in km": "10700",
+      "Transportmittel": "Flugzeug",
+    },
+    {
+      "von":"South Africa",
+      "nach":"USA, Washington, D.C.",
+      "Transportierte Ressourcen": "Gold, Diamonds, Platinum",
+      "Entfernung in km": "12300",
+      "Transportmittel": "Schiff",
+    },
+    {
+      "von":"Brazil",
+      "nach":"USA, Washington, D.C.",
+      "Transportierte Ressourcen": "Iron Ore",
+      "Entfernung in km": "5600",
+      "Transportmittel": "Flugzeug",
+    },
+    {
+      "von":"Russia",
+      "nach":"USA, Washington, D.C.",
+      "Transportierte Ressourcen": "Natural Gas, Coal",
+      "Entfernung in km": "7800",
+      "Transportmittel": "Flugzeug",
+    },
+    {
+      "von":"Türkiye",
+      "nach":"USA, Washington, D.C.",
+      "Transportierte Ressourcen": "Boron, Chromium",
+      "Entfernung in km": "8400",
+      "Transportmittel": "Schiff",
+    },
+  ];
+  List<Map<String, String>> _productionArcDataIndoorcamera = [
+    {
+      "von":"India",
+      "nach":"Romania",
+      "Entfernung in km": "5500",
+      "Transportmittel": "LKW",
+    },
+  ];
+  List<Map<String, String>> _productionArcDataThermostat = [
+    {
+      "von":"USA, Washington, D.C.",
+      "nach":"USA, Los-Angeles",
+      "Entfernung in km": "4000",
+      "Transportmittel": "Zug",
+    },
+  ];
+  List<Map<String, String>> _assemblyArcDataIndoorcamera = [
+    {
+      "von":"Romania",
+      "nach":"Germany",
       "Entfernung in km": "1000",
+      "Transportmittel": "LKW",
+    },
+  ];
+  List<Map<String, String>> _assemblyArcDataThermostat = [
+    {
+      "von":"USA, Los-Angeles",
+      "nach":"Swizerland",
+      "Entfernung in km": "9400",
+      "Transportmittel": "Flugzeug",
+    },
+  ];
+  List<Map<String, String>> _logisticsArcDataIndoorcamera = [
+    {
+      "von":"Germany",
+      "nach":"Swizerland",
+      "Entfernung in km": "500",
+      "Transportmittel": "Zug",
+    },
+    {
+      "von":"Germany",
+      "nach":"UK",
+      "Entfernung in km": "2300",
+      "Transportmittel": "Schiff",
+    },
+    {
+      "von":"Germany",
+      "nach":"Spain",
+      "Entfernung in km": "2500",
+      "Transportmittel": "LKW",
+    },
+    {
+      "von":"Germany",
+      "nach":"Italy",
+      "Entfernung in km": "1700",
+      "Transportmittel": "LKW",
+    },
+  ];
+  List<Map<String, String>> _logisticsArcDataThermostat = [
+    {
+      "von":"Swizerland",
+      "nach":"Swizerland",
+      "Entfernung in km": "0",
+      "Transportmittel": "LKW",
+    },
+    {
+      "von":"Swizerland",
+      "nach":"South Corea",
+      "Entfernung in km": "8600",
+      "Transportmittel": "Schiff",
+    },
+    {
+      "von":"Swizerland",
+      "nach":"Japan",
+      "Entfernung in km": "7900",
       "Transportmittel": "Flugzeug",
     },
     {
-
-      "Transportierte Ressourcen": "Details about the flight to Canberra.",
-      "Entfernung in km": "1500",
+      "von":"Swizerland",
+      "nach":"Germany",
+      "Entfernung in km": "400",
       "Transportmittel": "Flugzeug",
     },
-    // Add more entries for each arc you have
+    {
+      "von":"Swizerland",
+      "nach":"UK",
+      "Entfernung in km": "3500",
+      "Transportmittel": "Schiff",
+    },
+    {
+      "von":"Swizerland",
+      "nach":"Australia",
+      "Entfernung in km": "14000",
+      "Transportmittel": "Schiff",
+    },
+    {
+      "von":"Swizerland",
+      "nach":"Italy",
+      "Entfernung in km": "300",
+      "Transportmittel": "Schiff",
+    },
+    {
+      "von":"Swizerland",
+      "nach":"Russia",
+      "Entfernung in km": "8400",
+      "Transportmittel": "Schiff",
+    },
   ];
 
   @override
   Widget build(BuildContext context) {
+
 
     return Scaffold(
       appBar: AppBar(
@@ -394,9 +563,7 @@ class _TransportationPageState extends State<TransportationPage> {
 
                       markerBuilder: (BuildContext context, int index) {
                         String tooltipMessage = '${_data[index].country}\n${_data[index].function}';
-                        if (_data[index].description.isNotEmpty) {
-                          tooltipMessage += '\n${_data[index].description}';
-                        }
+
                         return MapMarker(
                           latitude: _data[index].latitude,
                           longitude: _data[index].longitude,
@@ -422,7 +589,12 @@ class _TransportationPageState extends State<TransportationPage> {
                         shapeDataField: "name",
                       ),
                       strokeColor: Colors.grey,
-                      strokeWidth: 0.5, // Customization for the map border lines
+                      strokeWidth: 0.5,
+                      tooltipSettings: MapTooltipSettings(
+                        color: Colors.grey,
+                        strokeColor: Colors.white,
+                        strokeWidth: 2,
+                      ),
 
                       sublayers: [
                         MapArcLayer(
@@ -437,37 +609,65 @@ class _TransportationPageState extends State<TransportationPage> {
                           <MapArc>{},
                           tooltipBuilder: (BuildContext context, int index) {
                             print(index);
-                            var currentArcData = _indoorcamFlag && _resourcesFlag ? _resourceArcData[index]:  {
-                              "Transportierte Ressourcen": "TODO",
-                              "Entfernung in km": "TODO",
-                              "Transportmittel": "TODO",
+                            var currentArcData = _indoorcamFlag && _resourcesFlag ? _resourceArcDataIndoorcamera[index]:
+                            _thermostatFlag && _resourcesFlag? _resourceArcDataThermostat[index]:
+                            _thermostatFlag && _productionFlag? _productionArcDataThermostat[index]:
+                            _thermostatFlag && _assemblyFlag? _assemblyArcDataThermostat[index]:
+                            _indoorcamFlag && _productionFlag? _productionArcDataIndoorcamera[index]:
+                            _indoorcamFlag && _assemblyFlag? _assemblyArcDataIndoorcamera[index]:
+                            _thermostatFlag && _logisticsFlag? _logisticsArcDataThermostat[index]:
+                            _indoorcamFlag && _logisticsFlag? _logisticsArcDataIndoorcamera[index]:
+                            {
                             } ;
-                            return Container(
-                              padding: EdgeInsets.all(2),
-                              height: 120,
-                              width: 200,
-                              child:  Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Row(children:[
-                                  Text("Transportierte Ressourcen: ", style: TextStyle(fontWeight: FontWeight.bold)),
-                                  Text(currentArcData["Transportierte Ressourcen"]!, style: TextStyle(fontWeight: FontWeight.bold)),]),
-                                  SizedBox(height: 8),
-                                  Row(children:[
-                                  Text("Entfernung in km: "),
-                                    Text(currentArcData["Entfernung in km"]!, style: TextStyle(fontWeight: FontWeight.bold)),]),
+                            return
+                              Container(
+                              padding: EdgeInsets.all(10),
+                              width: 300,
+                              height: 150,
 
+                              decoration: BoxDecoration(
+
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                              child:  Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Row( mainAxisAlignment: MainAxisAlignment.center,children:[
+                                    Text(currentArcData["von"]!, style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white, fontSize: 12 )),
+                                    Icon(Icons.arrow_forward, color: Colors.white),
+                                    Text(currentArcData["nach"]!, style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white, fontSize: 12)),]),
+                                  const Divider(
+                                    color: Colors.white,
+                                    height: 10,
+                                    thickness: 1.5,
+                                  ),
+                                  if(_resourcesFlag==true)
+                                    Row(mainAxisAlignment: MainAxisAlignment.center,children:[
+                                      Text("Transportierte Ress.: ", style: TextStyle(fontSize: 10, color: Colors.white)),
+                                      Text(currentArcData["Transportierte Ressourcen"]!, style: TextStyle(fontSize: 10, color: Colors.white)),]),
                                   SizedBox(height: 8),
-                            Row(children:[
-                                  Text("Transportmittel: "),
-                                  if (currentArcData["Transportmittel"] == "Flugzeug") Icon(Icons.airplanemode_active),
-                                  if (currentArcData["Transportmittel"] == "Zug") Icon(Icons.train),
-                                  if (currentArcData["Transportmittel"] == "LKW") Icon(Icons.fire_truck),]),
-                                  //Text(currentArcData["Entfernung"]!),
+                                  Row(mainAxisAlignment: MainAxisAlignment.center,children:[
+                                    Text("Entfernung in km: ", style: TextStyle(fontSize: 10, color: Colors.white)),
+                                    Text(currentArcData["Entfernung in km"]!, style: TextStyle(fontWeight:FontWeight.bold, fontSize: 10, color: Colors.white)),]),
+                                  SizedBox(height: 8),
+                                  Row(mainAxisAlignment: MainAxisAlignment.center,children:[
+                                        Text("Transportmittel: ", style: TextStyle(fontSize: 10, color: Colors.white)),
+                                        if (currentArcData["Transportmittel"] == "Flugzeug") Icon(Icons.airplanemode_active, color: Colors.white,),
+                                        if (currentArcData["Transportmittel"] == "Zug") Icon(Icons.train, color: Colors.white),
+                                        if (currentArcData["Transportmittel"] == "LKW") Icon(Icons.fire_truck, color: Colors.white),
+                                        if (currentArcData["Transportmittel"] == "Schiff") Icon(Icons.directions_boat, color: Colors.white),]),
+                                  SizedBox(height: 8),
+                                  Row(mainAxisAlignment: MainAxisAlignment.center,children:[
+                                    Text("CO2-Emissionen/transportierter Tonne und km: ", style: TextStyle(fontSize: 10, color: Colors.white)),
+                                    if (currentArcData["Transportmittel"] == "Flugzeug") Text("500-900 g", style: TextStyle(fontSize: 10, color: Colors.white)),
+                                    if (currentArcData["Transportmittel"] == "Zug") Text("20-80 g", style: TextStyle(fontSize: 10, color: Colors.white)),
+                                    if (currentArcData["Transportmittel"] == "LKW") Text("50-150 g", style: TextStyle(fontSize: 10, color: Colors.white)),
+                                    if (currentArcData["Transportmittel"] == "Schiff") Text("10-40 g", style: TextStyle(fontSize: 10, color: Colors.white)),]),
                                 ],
                               ),
                             );
                           },
+
                         )
                       ],
                     ),
