@@ -608,7 +608,6 @@ class _TransportationPageState extends State<TransportationPage> {
                               _thermostatFlag && _logisticsFlag ? _logisticsArcThermostat:
                           <MapArc>{},
                           tooltipBuilder: (BuildContext context, int index) {
-                            print(index);
                             var currentArcData = _indoorcamFlag && _resourcesFlag ? _resourceArcDataIndoorcamera[index]:
                             _thermostatFlag && _resourcesFlag? _resourceArcDataThermostat[index]:
                             _thermostatFlag && _productionFlag? _productionArcDataThermostat[index]:
