@@ -618,6 +618,18 @@ class _TransportationPageState extends State<TransportationPage> {
                             _indoorcamFlag && _logisticsFlag? _logisticsArcDataIndoorcamera[index]:
                             {
                             } ;
+                            int transportmittel_emission = 0;
+                            if (currentArcData["Transportmittel"] == "Flugzeug") {
+                              transportmittel_emission = 2028;
+                            } else if (currentArcData["Transportmittel"] == "Zug") {
+                              transportmittel_emission = 33;
+                            } else if (currentArcData["Transportmittel"] == "LKW") {
+                              transportmittel_emission = 106;
+                            } else if (currentArcData["Transportmittel"] == "Schiff") {
+                              transportmittel_emission = 43;
+                            }
+
+                            double emission = int.parse(currentArcData["Entfernung in km"]!) * transportmittel_emission / 1000;
                             return
                               Container(
                               padding: EdgeInsets.all(10),
@@ -632,6 +644,11 @@ class _TransportationPageState extends State<TransportationPage> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Row( mainAxisAlignment: MainAxisAlignment.center,children:[
+                                    if (currentArcData["Transportmittel"] == "Flugzeug") Icon(Icons.airplanemode_active, color: Colors.white, ),
+                                    if (currentArcData["Transportmittel"] == "Zug") Icon(Icons.train, color: Colors.white),
+                                    if (currentArcData["Transportmittel"] == "LKW") Icon(Icons.fire_truck, color: Colors.white),
+                                    if (currentArcData["Transportmittel"] == "Schiff") Icon(Icons.directions_boat, color: Colors.white),
+                                    SizedBox(width: 10),
                                     Text(currentArcData["von"]!, style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white, fontSize: 12 )),
                                     Icon(Icons.arrow_forward, color: Colors.white),
                                     Text(currentArcData["nach"]!, style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white, fontSize: 12)),]),
@@ -650,18 +667,16 @@ class _TransportationPageState extends State<TransportationPage> {
                                     Text(currentArcData["Entfernung in km"]!, style: TextStyle(fontWeight:FontWeight.bold, fontSize: 10, color: Colors.white)),]),
                                   SizedBox(height: 8),
                                   Row(mainAxisAlignment: MainAxisAlignment.center,children:[
-                                        Text("Transportmittel: ", style: TextStyle(fontSize: 10, color: Colors.white)),
-                                        if (currentArcData["Transportmittel"] == "Flugzeug") Icon(Icons.airplanemode_active, color: Colors.white,),
-                                        if (currentArcData["Transportmittel"] == "Zug") Icon(Icons.train, color: Colors.white),
-                                        if (currentArcData["Transportmittel"] == "LKW") Icon(Icons.fire_truck, color: Colors.white),
-                                        if (currentArcData["Transportmittel"] == "Schiff") Icon(Icons.directions_boat, color: Colors.white),]),
+                                    Text("CO2-Emissionen/Tonnenkilometer in g: ", style: TextStyle(fontSize: 10, color: Colors.white)),
+                                    if (currentArcData["Transportmittel"] == "Flugzeug") Text("2028", style: TextStyle(fontSize: 10, color: Colors.white)),
+                                    if (currentArcData["Transportmittel"] == "Zug") Text("33", style: TextStyle(fontSize: 10, color: Colors.white)),
+                                    if (currentArcData["Transportmittel"] == "LKW") Text("106", style: TextStyle(fontSize: 10, color: Colors.white)),
+                                    if (currentArcData["Transportmittel"] == "Schiff") Text("43", style: TextStyle(fontSize: 10, color: Colors.white)),]),
                                   SizedBox(height: 8),
-                                  Row(mainAxisAlignment: MainAxisAlignment.center,children:[
-                                    Text("CO2-Emissionen/transportierter Tonne und km: ", style: TextStyle(fontSize: 10, color: Colors.white)),
-                                    if (currentArcData["Transportmittel"] == "Flugzeug") Text("500-900 g", style: TextStyle(fontSize: 10, color: Colors.white)),
-                                    if (currentArcData["Transportmittel"] == "Zug") Text("20-80 g", style: TextStyle(fontSize: 10, color: Colors.white)),
-                                    if (currentArcData["Transportmittel"] == "LKW") Text("50-150 g", style: TextStyle(fontSize: 10, color: Colors.white)),
-                                    if (currentArcData["Transportmittel"] == "Schiff") Text("10-40 g", style: TextStyle(fontSize: 10, color: Colors.white)),]),
+                                  Row(mainAxisAlignment: MainAxisAlignment.center, children:[
+                                  Text("CO2-Emissionen/Tonne in kg: ", style: TextStyle(fontSize: 10, color: Colors.white)),
+                                  Text("$emission", style: TextStyle(fontSize: 10, color: Colors.white)),
+                                  ]),
                                 ],
                               ),
                             );
