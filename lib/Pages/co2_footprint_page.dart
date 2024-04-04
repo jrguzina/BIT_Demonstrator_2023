@@ -1,5 +1,5 @@
 import 'dart:math';
-
+import 'package:syncfusion_flutter_gauges/gauges.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -64,8 +64,8 @@ class MySwitchState extends State<MySwitch> {
         if (resource == "energyConsumption") {
           result += gadgets[i].energyConsumption;
         }
-        if (resource == "carbonFootprint") {
-          result += gadgets[i].carbonFootprint;
+        if (resource == "energySavings") {
+          result += gadgets[i].energySavings;
         }
         if (resource == "price") {
           result += gadgets[i].price;
@@ -87,8 +87,8 @@ class MySwitchState extends State<MySwitch> {
       if (resource == "energyConsumption") {
         result += gadgets[i].energyConsumption;
       }
-      if (resource == "carbonFootprint") {
-        result += gadgets[i].carbonFootprint;
+      if (resource == "energySavings") {
+        result += gadgets[i].energySavings;
       }
       if (resource == "price") {
         result += gadgets[i].price;
@@ -102,6 +102,9 @@ class MySwitchState extends State<MySwitch> {
     }
     return result;
   }
+
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -126,6 +129,7 @@ class MySwitchState extends State<MySwitch> {
     return
     Row(children:[
       Container(
+
       width: 290,
       height: 1085,
       margin: EdgeInsets.all(25.0),
@@ -255,7 +259,6 @@ class MySwitchState extends State<MySwitch> {
           ),
           Positioned(
             top: 410*scale,
-
             left: 615*scale,
             child: AnimatedOpacity(
               opacity: _lichtsteuerungValue ? 1.0 : 0.0,
@@ -275,12 +278,12 @@ class MySwitchState extends State<MySwitch> {
         ],
       ),Expanded(child:
     Container(
-
     height: 1085,
     margin: EdgeInsets.all(25.0),
     child:Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children:[
+
 
 
             Text(
@@ -293,36 +296,108 @@ class MySwitchState extends State<MySwitch> {
             value: (getResource("energyConsumption") /
                 getFullResource(
                     "energyConsumption")), // Assuming the price is a percentage of 100
-            backgroundColor: Colors.cyan
+            backgroundColor: Colors.red
                 .shade300, // Color of the background of the progress bar.
             valueColor: AlwaysStoppedAnimation<Color>(Colors
-                .cyan.shade900), // Color of the progress in the progress bar
+                .red.shade900), // Color of the progress in the progress bar
             minHeight: 20),),
         Text(
           '${getResource("energyConsumption").round()} kwH', // Convert the progress to percentage and round it
           style: TextStyle(fontSize: 18.0),
         ),
         SizedBox(height: 40),
+          Text(
+            'Energy Savings per Day',
+            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+          ),ClipRRect(
+            borderRadius: BorderRadius.circular(20),
+            child:
+            LinearProgressIndicator(
+                value: (getResource("energySavings") /
+                    getFullResource(
+                        "energySavings")), // Assuming the price is a percentage of 100
+                backgroundColor: Colors.cyan
+                    .shade300, // Color of the background of the progress bar.
+                valueColor: AlwaysStoppedAnimation<Color>(Colors
+                    .cyan.shade900), // Color of the progress in the progress bar
+                minHeight: 20),),
+          Text(
+            '${getResource("energySavings").round()} kwH', // Convert the progress to percentage and round it
+            style: TextStyle(fontSize: 18.0),
+          ),
+          SizedBox(height: 40),
         Text(
-          'Carbon Footprint over Product-Lifespan',
+          'Net Energy Influence',
           style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
         ),ClipRRect(
         borderRadius: BorderRadius.circular(20),
         child:
-        LinearProgressIndicator(
-            value: (getResource("carbonFootprint") /
-                getFullResource(
-                    "carbonFootprint")), // Assuming the price is a percentage of 100
-            backgroundColor: Colors.brown
-                .shade200, // Color of the background of the progress bar.
-            valueColor: AlwaysStoppedAnimation<Color>(
-                Colors.brown), // Color of the progress in the progress bar
-            minHeight: 20),),
-        Text(
-          '${getResource("carbonFootprint").round()} tons of CO2', // Convert the progress to percentage and round it
-          style: TextStyle(fontSize: 18.0),
-        ),
-        SizedBox(height: 40),
+          SfRadialGauge(
+            enableLoadingAnimation: true,
+              axes: <RadialAxis>[
+                RadialAxis(minimum: -500,maximum: 500,
+                    ranges: <GaugeRange>[
+                      GaugeRange(
+                        startValue: -500,
+                        endValue: -300,
+                        startWidth: 10,
+                        endWidth:10,
+                        gradient: const SweepGradient(
+                          colors: <Color>[ Color(0XFF006064), Colors.cyan],),),
+                      GaugeRange(
+                        startValue: -300,
+                        endValue: -100,
+                        startWidth: 10,
+                        endWidth:10,
+                        gradient: const SweepGradient(
+                          colors: <Color>[ Colors.cyan, Color(0XFFB2EBF2)],),),
+                      GaugeRange(
+                        startValue: -100,
+                        endValue: 100,
+                        startWidth: 10,
+                        endWidth:10,
+                        gradient: const SweepGradient(
+                          colors: <Color>[Color(0XFFB2EBF2), Color(0XFFFFCDD2)]),),
+                      GaugeRange(
+                        startValue: 100,
+                        endValue: 300,
+                        startWidth: 10,
+                        endWidth:10,
+                        gradient: const SweepGradient(
+                          colors: <Color>[ Color(0XFFFFCDD2), Colors.red],),),
+                      GaugeRange(
+                        startValue: 300,
+                        endValue: 500,
+                        startWidth: 10,
+                        endWidth:10,
+                        gradient: const SweepGradient(
+                          colors: <Color>[ Colors.red, Color(0XFFB71C1C)],),),
+
+                    ],
+
+                    showTicks: false,
+
+                    showLastLabel: true,
+          interval: 100,
+          axisLineStyle: const AxisLineStyle(
+          thickness: 0.08,
+          thicknessUnit: GaugeSizeUnit.factor,
+          ),
+          pointers: <GaugePointer>[
+          NeedlePointer(
+            enableAnimation: true,
+          needleLength: 0.7,
+          value: getResource("energyConsumption")-getResource("energySavings"),
+          needleColor: Color(0xFFDD908B),
+          needleStartWidth: 0,
+          needleEndWidth:  3 ,
+          knobStyle: KnobStyle(color: Color(0xFFDD908B), knobRadius: 0.05)),
+          ]),
+              ]
+          ),),
+
+          SizedBox(height: 40),
+
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
@@ -366,25 +441,7 @@ class MySwitchState extends State<MySwitch> {
           ],
         ),
         SizedBox(height: 40),
-        Text(
-          'Price',
-          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-        ),ClipRRect(
-        borderRadius: BorderRadius.circular(20),
-        child:
-        LinearProgressIndicator(
-            value: (getResource("price") /
-                getFullResource(
-                    "price")), // Assuming the price is a percentage of 100
-            backgroundColor: Colors.lightGreen
-                .shade300, // Color of the background of the progress bar.
-            valueColor: AlwaysStoppedAnimation<Color>(Colors.lightGreen
-                .shade900), // Color of the progress in the progress bar
-            minHeight: 20),),
-        Text(
-          '${(getResource("price")).round()} Euros', // Convert the progress to percentage and round it
-          style: TextStyle(fontSize: 18.0),
-        ),]
+        ]
       )
     )),]
     );
@@ -399,7 +456,7 @@ class SmartHomeGadget {
   int comfort;
   int security;
   double energyConsumption;
-  double carbonFootprint;
+  double energySavings;
 
   SmartHomeGadget({
     required this.name,
@@ -407,7 +464,7 @@ class SmartHomeGadget {
     required this.comfort,
     required this.security,
     required this.energyConsumption,
-    required this.carbonFootprint,
+    required this.energySavings,
   });
 }
 
@@ -417,7 +474,7 @@ SmartHomeGadget _thermostat = SmartHomeGadget(
   comfort: 5,
   security: 3,
   energyConsumption: 65.0,
-  carbonFootprint: 12,
+  energySavings: 85,
 );
 SmartHomeGadget _inneKamera = SmartHomeGadget(
   name: 'Thermostat',
@@ -425,7 +482,7 @@ SmartHomeGadget _inneKamera = SmartHomeGadget(
   comfort: 5,
   security: 3,
   energyConsumption: 50.0,
-  carbonFootprint: 12,
+  energySavings: 0,
 );
 SmartHomeGadget _aussenKamera = SmartHomeGadget(
   name: 'Thermostat',
@@ -433,7 +490,7 @@ SmartHomeGadget _aussenKamera = SmartHomeGadget(
   comfort: 5,
   security: 3,
   energyConsumption: 15.0,
-  carbonFootprint: 12,
+  energySavings: 0,
 );
 SmartHomeGadget _fensterkontakt = SmartHomeGadget(
   name: 'Thermostat',
@@ -441,7 +498,7 @@ SmartHomeGadget _fensterkontakt = SmartHomeGadget(
   comfort: 5,
   security: 3,
   energyConsumption: 30.0,
-  carbonFootprint: 12,
+  energySavings: 45,
 );
 SmartHomeGadget _lichtsteuerung = SmartHomeGadget(
   name: 'Thermostat',
@@ -449,7 +506,7 @@ SmartHomeGadget _lichtsteuerung = SmartHomeGadget(
   comfort: 5,
   security: 3,
   energyConsumption: 10.0,
-  carbonFootprint: 12,
+  energySavings: 22,
 );
 SmartHomeGadget _schloss = SmartHomeGadget(
   name: 'Schloss',
@@ -457,5 +514,5 @@ SmartHomeGadget _schloss = SmartHomeGadget(
   comfort: 5,
   security: 3,
   energyConsumption: 20.0,
-  carbonFootprint: 12,
+  energySavings: 0,
 );

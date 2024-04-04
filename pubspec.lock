@@ -261,6 +261,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "20.4.54"
+  syncfusion_flutter_gauges:
+    dependency: "direct main"
+    description:
+      name: syncfusion_flutter_gauges
+      sha256: "6b7a901a33345511080d74770dfcdc37d30a15667c73819932786b95b3ec2dfb"
+      url: "https://pub.dev"
+    source: hosted
+    version: "20.4.54"
   syncfusion_flutter_maps:
     dependency: "direct main"
     description:

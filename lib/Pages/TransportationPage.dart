@@ -664,7 +664,7 @@ class _TransportationPageState extends State<TransportationPage> {
                                   SizedBox(height: 8),
                                   Row(mainAxisAlignment: MainAxisAlignment.center,children:[
                                     Text("Entfernung in km: ", style: TextStyle(fontSize: 10, color: Colors.white)),
-                                    Text(currentArcData["Entfernung in km"]!, style: TextStyle(fontWeight:FontWeight.bold, fontSize: 10, color: Colors.white)),]),
+                                    Text(currentArcData["Entfernung in km"]!, style: TextStyle(fontSize: 10, color: Colors.white)),]),
                                   SizedBox(height: 8),
                                   Row(mainAxisAlignment: MainAxisAlignment.center,children:[
                                     Text("CO2-Emissionen/Tonnenkilometer in g: ", style: TextStyle(fontSize: 10, color: Colors.white)),
