@@ -31,7 +31,7 @@ class _TransportationPageState extends State<TransportationPage> {
     ),
      MapArc(
       from: MapLatLng(22.3193, 114.1694), to: MapLatLng(20.5937, 78.9629),
-      color: Colors.red[200]!, width: 6,
+      color: Colors.red[200]!, width: 2,
     ),
      MapArc(
       from: MapLatLng(36.2048, 138.2529), to: MapLatLng(20.5937, 78.9629),
@@ -39,11 +39,11 @@ class _TransportationPageState extends State<TransportationPage> {
     ),
      MapArc(
       from: MapLatLng(26.8206, 30.8025), to: MapLatLng(20.5937, 78.9629),
-      color: Colors.red[200]!, width: 4,
+      color: Colors.red[200]!, width: 2,
     ),
      MapArc(
       from: MapLatLng(-35.6751, -71.5430), to: MapLatLng(20.5937, 78.9629),
-      color: Colors.red[200]!, width: 8,
+      color: Colors.red[200]!, width: 2,
     ),
   };
 
@@ -51,12 +51,12 @@ class _TransportationPageState extends State<TransportationPage> {
     MapArc(
       from: MapLatLng(-4.0383, 21.7587), // Democratic Republic of the Congo
       to: MapLatLng(38.9072, -77.0369), // USA, Washington D.C.
-      color: Colors.red[200]!, width: 6,
+      color: Colors.red[200]!, width: 2,
     ),
     MapArc(
       from: MapLatLng(-30.5595, 22.9375), // South Africa
       to: MapLatLng(38.9072, -77.0369), // USA, Washington D.C.
-      color: Colors.red[200]!, width: 6,
+      color: Colors.red[200]!, width: 2,
     ),
     MapArc(
       from: MapLatLng(-14.2350, -51.9253), // Brazil
@@ -66,12 +66,12 @@ class _TransportationPageState extends State<TransportationPage> {
     MapArc(
       from: MapLatLng(61.5240, 105.3188), // Russia
       to: MapLatLng(38.9072, -77.0369), // USA, Washington D.C.
-      color: Colors.red[200]!, width: 4,
+      color: Colors.red[200]!, width: 2,
     ),
     MapArc(
       from: MapLatLng(38.9637, 35.2433), // Türkiye
       to: MapLatLng(38.9072, -77.0369), // USA, Washington D.C.
-      color: Colors.red[200]!, width: 4,
+      color: Colors.red[200]!, width: 2,
     ),
   };
 
@@ -543,6 +543,9 @@ class _TransportationPageState extends State<TransportationPage> {
             SizedBox(height: 20.0),
             Tile(
               title: 'Information',
+
+
+
               content:
                   'In dieser Grafik können Sie zunächst ein Smart-Home Produkt Ihrer Wahl aussuchen. '
                   'Basierend darauf zeigt die Karte die Herkunft der unterschiedlichen Komponenten, sowie deren Transportwege und Verarbeitungsschritte in der Lieferkette.',

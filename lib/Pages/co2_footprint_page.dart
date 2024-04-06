@@ -524,7 +524,7 @@ class MySwitchState extends State<MySwitch> {
                       ),
                       Text(
                         '=$netEmissions kg', // Convert the progress to percentage and round it
-                        style: TextStyle(fontSize: 18.0),
+                        style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
                       ),
                     ]
                 )
