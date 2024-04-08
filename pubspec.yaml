@@ -42,6 +42,7 @@ dependencies:
   countries_world_map: ^1.1.1
   syncfusion_flutter_maps: ^20.3.61
   syncfusion_flutter_gauges: ^20.3.61
+  syncfusion_flutter_treemap: ^20.4.54-beta
 
 dev_dependencies:
   flutter_test:

@@ -5,7 +5,7 @@ import 'package:model_viewer_plus/model_viewer_plus.dart';
 import 'package:bit_dem_1/Pages/co2_footprint_page.dart';
 import 'package:bit_dem_1/Pages/EnergyUsagePage.dart';
 import 'package:bit_dem_1/Pages/TransportationPage.dart';
-import 'package:bit_dem_1/Pages/ResourceUsagePage.dart';
+import 'package:bit_dem_1/Pages/SmartHomeResourcePage.dart';
 
 class StartPage extends StatelessWidget {
   @override
@@ -25,6 +25,7 @@ class StartPage extends StatelessWidget {
         child: Column(
           children: <Widget>[
             Expanded(
+              flex: 1, // Weniger Platz für die obere Reihe
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: <Widget>[
@@ -56,6 +57,7 @@ class StartPage extends StatelessWidget {
               ),
             ),
             Expanded(
+              flex: 2, // Weniger Platz für die obere Reihe
               child: Align(
                 alignment: Alignment.center,
                 child: Container(
@@ -84,6 +86,7 @@ class StartPage extends StatelessWidget {
               ),
             ),
             Expanded(
+              flex: 1, // Weniger Platz für die obere Reihe
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: <Widget>[
@@ -94,7 +97,7 @@ class StartPage extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => ResourceUsagePage(),
+                          builder: (context) => SmartHomeResourcePage(),
                         ),
                       );
                     },
