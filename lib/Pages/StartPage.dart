@@ -10,6 +10,12 @@ import 'package:bit_dem_1/Pages/SmartHomeResourcePage.dart';
 class StartPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    double minModelSize = 300;
+    double modelWidth = MediaQuery.of(context).size.width * 0.5;
+    double modelHeight = MediaQuery.of(context).size.height * 0.8;
+    modelWidth = modelWidth < minModelSize ? minModelSize : modelWidth;
+    modelHeight = modelHeight < minModelSize ? minModelSize : modelHeight;
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Bosch Smart Home Demonstrator'),
@@ -22,12 +28,11 @@ class StartPage extends StatelessWidget {
             colors: [Colors.blue, Colors.lightBlueAccent],
           ),
         ),
-        child: Column(
+        child: Row(
           children: <Widget>[
             Expanded(
-              flex: 1, // Weniger Platz für die obere Reihe
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceAround, // Gleichmäßige Verteilung
                 children: <Widget>[
                   CategoryCard(
                     category: 'Energie',
@@ -42,55 +47,6 @@ class StartPage extends StatelessWidget {
                     },
                   ),
                   CategoryCard(
-                    category: 'Transport',
-                    icon: Icon(Icons.directions_car),
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => TransportationPage(),
-                        ),
-                      );
-                    },
-                  ),
-                ],
-              ),
-            ),
-            Expanded(
-              flex: 2, // Weniger Platz für die obere Reihe
-              child: Align(
-                alignment: Alignment.center,
-                child: Container(
-                  width: MediaQuery.of(context).size.width * 0.8, // 80% der Bildschirmbreite
-                  height: MediaQuery.of(context).size.height * 0.8, // 80% der Bildschirmhöhe
-                  decoration: BoxDecoration(
-                    color: Colors.white.withOpacity(0.2),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.05),
-                        blurRadius: 10,
-                        spreadRadius: 2,
-                      ),
-                    ],
-                  ),
-                  padding: EdgeInsets.all(20),
-                  child: ModelViewer(
-                    src: 'assets/bosch_camera_model.glb',
-                    //src: 'assets/Format2.glb',
-                    autoPlay: true,
-                    backgroundColor: Colors.transparent,
-                    cameraControls: true,
-                    autoRotate: true,
-                  ),
-                ),
-              ),
-            ),
-            Expanded(
-              flex: 1, // Weniger Platz für die obere Reihe
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: <Widget>[
-                  CategoryCard(
                     category: 'Ressourcen',
                     icon: Icon(Icons.local_florist),
                     onTap: () {
@@ -98,6 +54,46 @@ class StartPage extends StatelessWidget {
                         context,
                         MaterialPageRoute(
                           builder: (context) => SmartHomeResourcePage(),
+                        ),
+                      );
+                    },
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              width: modelWidth,
+              height: modelHeight,
+              decoration: BoxDecoration(
+                color: Colors.white.withOpacity(0.2),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.05),
+                    blurRadius: 10,
+                    spreadRadius: 2,
+                  ),
+                ],
+              ),
+              child: ModelViewer(
+                src: 'assets/bosch_camera_model.glb',
+                autoPlay: true,
+                backgroundColor: Colors.transparent,
+                cameraControls: true,
+                autoRotate: true,
+              ),
+            ),
+            Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceAround, // Gleichmäßige Verteilung
+                children: <Widget>[
+                  CategoryCard(
+                    category: 'Transport',
+                    icon: Icon(Icons.directions_car),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => TransportationPage(),
                         ),
                       );
                     },
@@ -124,14 +120,12 @@ class StartPage extends StatelessWidget {
   }
 }
 
-
-
 class CategoryCard extends StatelessWidget {
   final String category;
   final VoidCallback onTap;
   final Icon icon;
 
-  CategoryCard({required this.category, required this.onTap,required this.icon});
+  CategoryCard({required this.category, required this.onTap, required this.icon});
 
   @override
   Widget build(BuildContext context) {
@@ -148,7 +142,7 @@ class CategoryCard extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              icon, // Display the icon here
+              icon,
               Text(
                 category,
                 style: TextStyle(fontSize: 20.0),
