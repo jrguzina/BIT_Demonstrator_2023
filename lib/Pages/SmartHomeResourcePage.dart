@@ -68,7 +68,6 @@ class TreemapRangeColorMappingSample extends StatefulWidget {
 class _TreemapRangeColorMappingSampleState extends State<TreemapRangeColorMappingSample> {
   late List<_ResourceDetails> _resourceDetailsList;
   late List<TreemapColorMapper> _colorMappers;
-  late bool _isLightTheme;
   late bool isDesktop;
   bool _isBoxMaximized = false;
   int _selectedBoxIndex = -1;
@@ -272,7 +271,6 @@ class _TreemapRangeColorMappingSampleState extends State<TreemapRangeColorMappin
   @override
   Widget build(BuildContext context) {
     final ThemeData themeData = Theme.of(context);
-    _isLightTheme = themeData.colorScheme.brightness == Brightness.light;
     isDesktop = kIsWeb || themeData.platform == TargetPlatform.macOS || themeData.platform == TargetPlatform.linux || themeData.platform == TargetPlatform.windows;
 
     return LayoutBuilder(
@@ -502,7 +500,7 @@ class _TreemapRangeColorMappingSampleState extends State<TreemapRangeColorMappin
           Expanded(
             flex: 5,
             child: Text(
-              value,
+              ' ' + value, // Leerzeichen vor dem Wert hinzugefügt
               textAlign: TextAlign.left,
               style: TextStyle(
                 fontSize: 16.0,
