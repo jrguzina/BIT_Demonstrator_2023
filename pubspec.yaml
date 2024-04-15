@@ -80,7 +80,9 @@ flutter:
     - assets/thermostat.png
     - assets/home.png
     - assets/world_map.json
-    - assets/
+    - assets/umwelt.jpg
+    - assets/recycling.jpg
+    - assets/aluminium.jpg
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
