@@ -83,6 +83,15 @@ flutter:
     - assets/umwelt.jpg
     - assets/recycling.jpg
     - assets/aluminium.jpg
+    - assets/silizium.jpeg
+    - assets/kupfer.jpg
+    - assets/kunststoff.jpg
+    - assets/glas.jpg
+    - assets/lithium.jpg
+    - assets/eisen.jpg
+    - assets/zinn.jpg
+    - assets/gold.jpg
+    - assets/silber.jpg
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
