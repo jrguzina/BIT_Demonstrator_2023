@@ -286,7 +286,6 @@ class _TransportationPageState extends State<TransportationPage> {
       _data = <MarkerData>[MarkerData(
         latitude: 46.8182, longitude: 8.2275, // Switzerland
         country: 'Switzerland', function: 'Logistics',
-
         colour: Colors.blue, icon:  Icon(Icons.local_shipping, color: Colors.blue, size: 20),
       ),
 

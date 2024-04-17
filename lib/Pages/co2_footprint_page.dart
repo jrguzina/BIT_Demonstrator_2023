@@ -287,13 +287,13 @@ class MySwitchState extends State<MySwitch> {
                     child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text('How many years are you planning to use your Smart-Home devices?',
+                          Text('Planned duaration of use of the devices',
                               style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
                               ),
                               textAlign: TextAlign.center),
-                          SizedBox(height: 10,),
+                          SizedBox(height: 5),
                           Slider(
                             value: _currentSliderValue,
                             min: 1,
@@ -309,8 +309,8 @@ class MySwitchState extends State<MySwitch> {
                           ),
                           const Divider(
                             color: Colors.grey,
-                            height: 30,
-                            thickness: 5,
+                            height: 10,
+                            thickness: 2,
                           ),
                           Row(mainAxisAlignment: MainAxisAlignment.center, children: [Icon(Icons.factory, color: Colors.deepOrange.shade300),
                             Text('Production and Transport',
@@ -319,9 +319,7 @@ class MySwitchState extends State<MySwitch> {
                                     fontWeight: FontWeight.bold, color: Colors.deepOrange.shade300
                                 ),
                                 textAlign: TextAlign.center),],),
-                          SizedBox(
-                            height: 10,
-                          ),
+                          SizedBox(height: 5),
                           Text(
                             'CO2 emitted',
                             style: TextStyle(
@@ -348,8 +346,8 @@ class MySwitchState extends State<MySwitch> {
                           ),
                           const Divider(
                             color: Colors.grey,
-                            height: 30,
-                            thickness: 5,
+                            height: 10,
+                            thickness: 2,
                           ),
                           Row(mainAxisAlignment: MainAxisAlignment.center, children: [Icon(Icons.smart_display, color: Color(0xFFDD908B),),
                             Text(
@@ -358,8 +356,7 @@ class MySwitchState extends State<MySwitch> {
                                   fontSize: 16, fontWeight: FontWeight.bold, color:Color(0xFFDD908B) ),
                               textAlign: TextAlign.center,
                             ),],),
-                          SizedBox(
-                            height: 10,
+                          SizedBox(height: 5,
                           ),
                           Text(
                             'CO2 emitted over $_currentSliderValue year(s)',
@@ -384,7 +381,7 @@ class MySwitchState extends State<MySwitch> {
                             '${getResource("co2EmittedUse").round()} kg', // Convert the progress to percentage and round it
                             style: TextStyle(fontSize: 18.0),
                           ),
-                          SizedBox(height: 40),
+                          SizedBox(height: 20),
                           Text(
                             'CO2 saved $_currentSliderValue year(s)',
                             style: TextStyle(
@@ -409,7 +406,7 @@ class MySwitchState extends State<MySwitch> {
                             '${getResource("co2SavedUse").round()} kg', // Convert the progress to percentage and round it
                             style: TextStyle(fontSize: 18.0),
                           ),
-                          SizedBox(height: 40),
+                          SizedBox(height: 20),
                           Text(
                             'Net CO2 emitted in kg',
                             style: TextStyle(
@@ -418,7 +415,10 @@ class MySwitchState extends State<MySwitch> {
                             textAlign: TextAlign.center,
                           ),
                           ClipRRect(
-                            borderRadius: BorderRadius.circular(20),
+                            borderRadius: BorderRadius.circular(10),
+                            child: Container(
+                              height: 160,
+
                             child: SfRadialGauge(
                                 enableLoadingAnimation: true,
                                 axes: <RadialAxis>[
@@ -461,11 +461,11 @@ class MySwitchState extends State<MySwitch> {
                                                 knobRadius: 0.05)),
                                       ]),
                                 ]),
-                          ),
+                          ),),
                           const Divider(
                             color: Colors.grey,
-                            height: 30,
-                            thickness: 5,
+                            height: 10,
+                            thickness: 2,
                           ),
                           Row(mainAxisAlignment: MainAxisAlignment.center, children: [Icon(Icons.recycling, color: Colors
                               .brown
@@ -479,7 +479,7 @@ class MySwitchState extends State<MySwitch> {
                                 ),
                                 textAlign: TextAlign.center),],),
                           SizedBox(
-                            height: 10,
+                            height: 5,
                           ),
                           Text(
                             'CO2 emitted',
@@ -505,8 +505,8 @@ class MySwitchState extends State<MySwitch> {
                           ),
                           const Divider(
                             color: Colors.grey,
-                            height: 30,
-                            thickness: 5,
+                            height: 10,
+                            thickness: 2,
                           ),
                           Row(mainAxisAlignment: MainAxisAlignment.center, children: [Icon(Icons.co2),
                             Text('Net emission over lifecycle',
@@ -516,7 +516,7 @@ class MySwitchState extends State<MySwitch> {
                                 ),
                                 textAlign: TextAlign.center),],),
                           SizedBox(
-                            height: 10,
+                            height: 5,
                           ),
                           Text(
                             '${getResource("co2EmittedProduction").round()} kg + ${getResource("co2EmittedUse").round()} kg - ${getResource("co2SavedUse").round()} kg + ${getResource("co2EmittedRecycling").round()} kg', // Convert the progress to percentage and round it
