@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:model_viewer_plus/model_viewer_plus.dart';
 
@@ -7,7 +6,14 @@ import 'package:bit_dem_1/Pages/EnergyUsagePage.dart';
 import 'package:bit_dem_1/Pages/TransportationPage.dart';
 import 'package:bit_dem_1/Pages/SmartHomeResourcePage.dart';
 
-class StartPage extends StatelessWidget {
+class StartPage extends StatefulWidget {
+  @override
+  _StartPageState createState() => _StartPageState();
+}
+
+class _StartPageState extends State<StartPage> {
+  bool useAlternativeModel = false;
+
   @override
   Widget build(BuildContext context) {
     double minModelSize = 300;
@@ -32,7 +38,7 @@ class StartPage extends StatelessWidget {
           children: <Widget>[
             Expanded(
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceAround, // Gleichmäßige Verteilung
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: <Widget>[
                   CategoryCard(
                     category: 'Energie',
@@ -61,30 +67,12 @@ class StartPage extends StatelessWidget {
                 ],
               ),
             ),
-            Container(
-              width: modelWidth,
-              height: modelHeight,
-              decoration: BoxDecoration(
-                color: Colors.white.withOpacity(0.2),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.05),
-                    blurRadius: 10,
-                    spreadRadius: 2,
-                  ),
-                ],
-              ),
-              child: ModelViewer(
-                src: 'assets/bosch_camera_model.glb',
-                autoPlay: true,
-                backgroundColor: Colors.transparent,
-                cameraControls: true,
-                autoRotate: true,
-              ),
+            Expanded(
+              child: ModelViewerWidget(useAlternativeModel: useAlternativeModel),
             ),
             Expanded(
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceAround, // Gleichmäßige Verteilung
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: <Widget>[
                   CategoryCard(
                     category: 'Transport',
@@ -115,6 +103,57 @@ class StartPage extends StatelessWidget {
             ),
           ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          setState(() {
+            useAlternativeModel = !useAlternativeModel;
+          });
+        },
+        child: Icon(Icons.swap_horiz),
+      ),
+    );
+  }
+}
+
+class ModelViewerWidget extends StatefulWidget {
+  final bool useAlternativeModel;
+
+  const ModelViewerWidget({Key? key, required this.useAlternativeModel}) : super(key: key);
+
+  @override
+  _ModelViewerWidgetState createState() => _ModelViewerWidgetState();
+}
+
+class _ModelViewerWidgetState extends State<ModelViewerWidget> {
+  @override
+  Widget build(BuildContext context) {
+    double minModelSize = 300;
+    double modelWidth = MediaQuery.of(context).size.width * 0.5;
+    double modelHeight = MediaQuery.of(context).size.height * 0.8;
+    modelWidth = modelWidth < minModelSize ? minModelSize : modelWidth;
+    modelHeight = modelHeight < minModelSize ? minModelSize : modelHeight;
+
+    return Container(
+      width: modelWidth,
+      height: modelHeight,
+      decoration: BoxDecoration(
+        color: Colors.white.withOpacity(0.2),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.05),
+            blurRadius: 10,
+            spreadRadius: 2,
+          ),
+        ],
+      ),
+      child: ModelViewer(
+        key: UniqueKey(), //Force rebuild when key changes
+        src: widget.useAlternativeModel ? 'assets/poly.glb' : 'assets/bosch_camera_model.glb',
+        autoPlay: true,
+        backgroundColor: Colors.transparent,
+        cameraControls: true,
+        autoRotate: true,
       ),
     );
   }
