@@ -25,10 +25,10 @@ Um die App lokal auszuführen, führen Sie die folgenden Schritte aus:
 
 Wir freuen uns über Beiträge jeglicher Art! Wenn Sie einen Fehler gefunden haben, eine Funktion hinzufügen oder ein Problem beheben möchten, öffnen Sie bitte ein Issue oder senden Sie uns eine Pull-Anfrage.
 
-- Luca Guzina
-- Felix Narr
-- Niklas Mathauer
-- Joel Ganobis
+- Ganobis, Joel (BIT)
+- Guzina, Luca (BIT)
+- Mathauer, Niklas (BIT)
+- Narr, Felix (BIT)
 
 ## Lizenz
 
