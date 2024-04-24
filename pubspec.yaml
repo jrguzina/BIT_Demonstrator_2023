@@ -93,6 +93,11 @@ flutter:
     - assets/gold.jpg
     - assets/silber.jpg
     - assets/poly.glb
+    - assets/counter_1.png
+    - assets/counter_2.png
+    - assets/counter_3.png
+    - assets/counter_4.png
+
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
