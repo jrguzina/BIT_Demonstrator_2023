@@ -132,13 +132,35 @@ class _EnergyUsagePageState extends State<EnergyUsagePage> {
                         ),
                       ),
                       SizedBox(height: 10.0),
-                      Text(
-                        'Durchschnittlicher Verbrauch eines deutschen Haushalts (2 Personen, 75qm): 2770 kWh/Jahr',
-                        style: TextStyle(fontSize: 14.0),
+                      RichText(
+                        text: TextSpan(
+                          style: TextStyle(fontSize: 14.0, color: Colors.black),
+                          children: [
+                            TextSpan(
+                              text:
+                              'Durchschnittlicher Verbrauch eines deutschen Haushalts (2 Personen, 75qm): 3.470 kWh/Jahr\n',
+                            ),
+                            TextSpan(
+                              text: 'Quelle: Statistisches Bundesamt',
+                              style: TextStyle(fontSize: 12.0, color: Colors.grey),
+                            ),
+                          ],
+                        ),
                       ),
-                      Text(
-                        'Durchschnittlicher Verbrauch unter Einsatz von Smart Home Produkten: 1850 kWh/Jahr',
-                        style: TextStyle(fontSize: 14.0),
+                      RichText(
+                        text: TextSpan(
+                          style: TextStyle(fontSize: 14.0, color: Colors.black),
+                          children: [
+                            TextSpan(
+                              text:
+                              'Durchschnittlicher Verbrauch unter Einsatz von Smart Home Produkten (Energie, Sicherheit, Komfort): 2.324 kWh/Jahr\n',
+                            ),
+                            TextSpan(
+                              text: 'Quelle: Eigene Berechnungen basierend auf Studien (vgl. Öko-Institut - Quack et al., S.52)',
+                              style: TextStyle(fontSize: 12.0, color: Colors.grey),
+                            ),
+                          ],
+                        ),
                       ),
                     ],
                   ),
@@ -160,9 +182,19 @@ class _EnergyUsagePageState extends State<EnergyUsagePage> {
                         ),
                       ),
                       SizedBox(height: 10.0),
-                      Text(
-                        '14 TWh (Äquivalent der Nettoproduktion eines Kohlekraftwerks)',
-                        style: TextStyle(fontSize: 14.0),
+                      RichText(
+                        text: TextSpan(
+                          style: TextStyle(fontSize: 14.0, color: Colors.black),
+                          children: [
+                            TextSpan(
+                              text: '14 TWh (Äquivalent der Nettoproduktion eines Kohlekraftwerks) - langfristig bis zu 70TWh\n',
+                            ),
+                            TextSpan(
+                              text: 'Quelle: Studie - Bund für Umwelt und Naturschutz Deutschland e.V., S.22',
+                              style: TextStyle(fontSize: 12.0, color: Colors.grey),
+                            ),
+                          ],
+                        ),
                       ),
                       SizedBox(height: 10.0),
                       Container(
