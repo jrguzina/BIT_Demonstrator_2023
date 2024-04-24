@@ -38,6 +38,10 @@ Dieses Projekt ist unter der MIT-Lizenz lizenziert. Weitere Informationen finden
 
 Bei Fragen oder Anregungen können Sie uns gerne kontaktieren:
 
-- E-Mail: [luca.guzina@htwg-konstanz.de](mailto:luca.guzina@htwg-konstanz.de)
+- E-Mail Mitglied: [luca.guzina@htwg-konstanz.de](mailto:luca.guzina@htwg-konstanz.de)
+- E-Mail Mitglied: [luca.guzina@htwg-konstanz.de](mailto:felix.narr@htwg-konstanz.de)
+- E-Mail Mitglied: [luca.guzina@htwg-konstanz.de](mailto:niklas.mathauer@htwg-konstanz.de)
+- E-Mail Mitglied: [luca.guzina@htwg-konstanz.de](mailto:joel.ganobis@htwg-konstanz.de)
+- E-Mail Teamprojekt CEO: [sonya.meyer@htwg-konstanz.de](mailto:sonya.meyer@htwg-konstanz.de)
 
 Vielen Dank für Ihre Unterstützung und viel Spaß beim Entdecken unserer Smart Home Demonstrator App!
