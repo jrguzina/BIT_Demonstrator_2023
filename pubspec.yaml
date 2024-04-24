@@ -43,6 +43,7 @@ dependencies:
   syncfusion_flutter_maps: ^20.3.61
   syncfusion_flutter_gauges: ^20.3.61
   syncfusion_flutter_treemap: ^20.4.54-beta
+  info_widget: ^1.0.0
 
 dev_dependencies:
   flutter_test:

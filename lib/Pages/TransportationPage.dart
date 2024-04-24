@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:bit_dem_1/Elements/Tile.dart';
 import 'package:countries_world_map/countries_world_map.dart';
 import 'package:syncfusion_flutter_maps/maps.dart';
+import 'package:info_widget/info_widget.dart';
 
 class TransportationPage extends StatefulWidget {
   @override
@@ -534,21 +535,17 @@ class _TransportationPageState extends State<TransportationPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
+          children: <Widget>[Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
             const Text(
               'Auswirkungen auf Transport und Mobilität',
               style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
-            ),
+            ),InfoWidget(infoText: 'In dieser Grafik können Sie zunächst ein Smart-Home Produkt Ihrer Wahl aussuchen. '
+                'Basierend darauf zeigt die Karte die Herkunft der unterschiedlichen Komponenten, sowie deren Transportwege und Verarbeitungsschritte in der Lieferkette.',
+                iconData: Icons.help, iconColor: Colors.lightBlue)],),
             SizedBox(height: 20.0),
-            Tile(
-              title: 'Information',
 
-
-
-              content:
-                  'In dieser Grafik können Sie zunächst ein Smart-Home Produkt Ihrer Wahl aussuchen. '
-                  'Basierend darauf zeigt die Karte die Herkunft der unterschiedlichen Komponenten, sowie deren Transportwege und Verarbeitungsschritte in der Lieferkette.',
-            ),
             SizedBox(height: 20.0),
             Flexible(
               flex: 10,

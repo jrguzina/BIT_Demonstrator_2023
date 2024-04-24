@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
+import 'package:info_widget/info_widget.dart';
 import 'package:syncfusion_flutter_treemap/treemap.dart';
 
 class SmartHomeResourcePage extends StatelessWidget {
@@ -16,38 +17,16 @@ class SmartHomeResourcePage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
+          children: <Widget>[Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children:[
             const Text(
               'Ressourcenverwendung und damit verbundene Umweltauswirkungen',
               style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
-            ),
+            ),InfoWidget(infoText: 'Smart-Home-Geräte bestehen aus einer Vielzahl von Materialien, darunter Kunststoffe, Metalle wie Kupfer und Aluminium sowie seltene Erden. Die Gewinnung dieser Materialien kann umweltschädlich sein, insbesondere wenn sie nicht verantwortungsbewusst abgebaut werden. In einer Darstellung werden die Ressourcenanteile durch Containergrößen und die Umweltbelastung durch Farbcodes veranschaulicht.',
+                iconData: Icons.help, iconColor: Colors.lightBlue)],),
             const SizedBox(height: 20.0),
-            const FractionallySizedBox(
-              widthFactor: 1.00,
-              child: Card(
-                elevation: 4.0,
-                child: Padding(
-                  padding: EdgeInsets.all(16.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      const Text(
-                        'Hintergrund:',
-                        style: TextStyle(
-                          fontSize: 18.0,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      const SizedBox(height: 10.0),
-                      const Text(
-                        'Viele Smart-Home-Geräte enthalten Kunststoffe, Metalle (wie Kupfer und Aluminium), seltene Erden und manchmal auch wertvolle Metalle wie Gold. Die Gewinnung dieser Materialien kann umweltschädlich sein, insbesondere wenn sie nicht verantwortungsbewusst abgebaut werden.',
-                        style: TextStyle(fontSize: 14.0),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
+
             const Expanded(
               child: TreemapRangeColorMappingSample(),
             ),
@@ -280,13 +259,7 @@ class _TreemapRangeColorMappingSampleState extends State<TreemapRangeColorMappin
             padding: MediaQuery.of(context).orientation == Orientation.portrait || isDesktop ? const EdgeInsets.all(12.5) : const EdgeInsets.all(10.0),
             child: Column(
               children: <Widget>[
-                const SizedBox(height: 20),
-                const Text(
-                  'Ressourcenanteile dargestellt durch Containergröße, Umweltbelastung dargestellt durch Farbcodes.',
-                  style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
-                  textAlign: TextAlign.center,
-                ),
-                const SizedBox(height: 10),
+
                 _buildLegend(_colorMappers),
                 Expanded(
                   child: Stack(

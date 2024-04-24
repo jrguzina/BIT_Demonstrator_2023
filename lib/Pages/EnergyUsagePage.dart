@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:info_widget/info_widget.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 class EnergyUsagePage extends StatefulWidget {
@@ -23,11 +24,14 @@ class _EnergyUsagePageState extends State<EnergyUsagePage> {
           padding: const EdgeInsets.all(16.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: <Widget>[
+            children: <Widget>[Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children:[
               Text(
-                'Energieverbrauch pro Jahr',
+                'Darstellung des Energieverbrauchs pro Jahr',
                 style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
-              ),
+              ),InfoWidget(infoText: 'Diese Seite bietet Nutzern Einblicke in ihren Energieverbrauch und wie verschiedene Smart-Home-Funktionen ihn beeinflussen können. Sie dient der Informationsbereitstellung, Entscheidungsunterstützung und Bewusstseinsbildung, indem sie den Nutzern Muster im Verbrauch zeigt und sie dazu motiviert, energieeffiziente Entscheidungen zu treffen. Durch die direkte Benutzerinteraktion mit Schaltern können sie die Auswirkungen ihrer Entscheidungen auf den Energieverbrauch sehen, was die Seite zu einer wichtigen Ergänzung der App macht.',
+                  iconData: Icons.help, iconColor: Colors.lightBlue)]),
               SizedBox(height: 20.0),
               Container(
                 height: 300,
