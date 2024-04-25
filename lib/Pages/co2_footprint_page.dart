@@ -152,7 +152,7 @@ class MySwitchState extends State<MySwitch> {
                         },
                       ),
                       SwitchListTile(
-                        title: Text('Innekamera'),
+                        title: Text('Innenkamera'),
                         secondary: Icon(Icons.camera_indoor),
                         value: _inneKameraValue,
                         onChanged: (bool value) {
@@ -305,7 +305,7 @@ class MySwitchState extends State<MySwitch> {
                       child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text('Planned duaration of use of the devices',
+                            Text('Planned duration of use of the devices',
                                 style: TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.bold,
