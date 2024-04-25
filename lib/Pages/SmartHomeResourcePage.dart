@@ -23,7 +23,7 @@ class SmartHomeResourcePage extends StatelessWidget {
             const Text(
               'Ressourcenverwendung und damit verbundene Umweltauswirkungen',
               style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
-            ),InfoWidget(infoText: 'Smart-Home-Geräte bestehen aus einer Vielzahl von Materialien, darunter Kunststoffe, Metalle wie Kupfer und Aluminium sowie seltene Erden. Die Gewinnung dieser Materialien kann umweltschädlich sein, insbesondere wenn sie nicht verantwortungsbewusst abgebaut werden. In einer Darstellung werden die Ressourcenanteile durch Containergrößen und die Umweltbelastung durch Farbcodes veranschaulicht.',
+            ),InfoWidget(infoText: 'Smart-Home-Geräte bestehen aus einer Vielzahl von Materialien, darunter Kunststoffe, Metalle wie Kupfer und Aluminium sowie seltene Erden. Die Gewinnung dieser Materialien kann umweltschädlich sein, insbesondere wenn sie nicht verantwortungsbewusst abgebaut und weiterverarbeitet werden. Ein weiterer wichtiger Aspekt ist die Tauglichkeit zur Wiederverwendung der einzelnen Materialen, wenn Smart-Home-Geräte am Ende ihres Lebenszyklus recycelt werden sollen. In einer Darstellung werden die Anteile der verschiedenen Ressourcen durch die Größe der Behälter und die Umweltbelastung sowie Recyclingfähigkeit durch ein Farbsystem, ähnlich einem Ampelsystem, illustriert werden.',
                 iconData: Icons.help, iconColor: Colors.lightBlue)],),
             const SizedBox(height: 20.0),
 
@@ -66,7 +66,7 @@ class _TreemapRangeColorMappingSampleState extends State<TreemapRangeColorMappin
           country: 'Australien',
           miningConditions: 'Großteil aus offenem Abbau, umweltregulierte Verfahren.',
           productionDetails: 'Hauptsächlich mittels Elektrolyse verarbeitet.',
-          imagePath: 'assets/aluminium.jpg' // Pfad zum Bild
+          imagePath: 'assets/aluminium.jpg'
       ),
       _ResourceDetails(
           resourceName: 'Silizium',
@@ -79,7 +79,7 @@ class _TreemapRangeColorMappingSampleState extends State<TreemapRangeColorMappin
           country: 'China',
           miningConditions: 'Aus Sand gewonnen, mit hohen Energieanforderungen bei der Verarbeitung.',
           productionDetails: 'Reinigung und Kristallisierung sind energieintensiv.',
-          imagePath: 'assets/silizium.jpeg' // Pfad zum Bild
+          imagePath: 'assets/silizium.jpeg'
       ),
       _ResourceDetails(
           resourceName: 'Kupfer',
@@ -92,7 +92,7 @@ class _TreemapRangeColorMappingSampleState extends State<TreemapRangeColorMappin
           country: 'Chile',
           miningConditions: 'Größtenteils aus Tagebau, hoher Wasser- und Energieverbrauch.',
           productionDetails: 'Schmelzen und Raffinieren, strenge Umweltstandards.',
-          imagePath: 'assets/kupfer.jpg' // Pfad zum Bild
+          imagePath: 'assets/kupfer.jpg'
       ),
       _ResourceDetails(
           resourceName: 'Glas',
@@ -105,7 +105,7 @@ class _TreemapRangeColorMappingSampleState extends State<TreemapRangeColorMappin
           country: 'USA',
           miningConditions: 'Hergestellt aus Quarzsand, relativ geringe Umweltauswirkungen.',
           productionDetails: 'Schmelzen bei hohen Temperaturen, hoher Energieverbrauch.',
-          imagePath: 'assets/glas.jpg' // Pfad zum Bild
+          imagePath: 'assets/glas.jpg'
       ),
       _ResourceDetails(
           resourceName: 'Kunststoff',
@@ -118,7 +118,7 @@ class _TreemapRangeColorMappingSampleState extends State<TreemapRangeColorMappin
           country: 'Deutschland',
           miningConditions: 'Abgeleitet von Erdöl, chemische Verarbeitung.',
           productionDetails: 'Polymerisation in großen industriellen Anlagen.',
-          imagePath: 'assets/kunststoff.jpg' // Pfad zum Bild
+          imagePath: 'assets/kunststoff.jpg'
       ),
       _ResourceDetails(
           resourceName: 'Eisen',
@@ -131,7 +131,7 @@ class _TreemapRangeColorMappingSampleState extends State<TreemapRangeColorMappin
           country: 'Brasilien',
           miningConditions: 'Meist aus Tagebau, bedeutende Umweltauswirkungen durch Abholzung.',
           productionDetails: 'Verhüttung unter Einsatz von Kohle, hohe CO2-Emissionen.',
-          imagePath: 'assets/eisen.jpg' // Pfad zum Bild
+          imagePath: 'assets/eisen.jpg'
       ),
       _ResourceDetails(
           resourceName: 'Gold',
@@ -144,7 +144,7 @@ class _TreemapRangeColorMappingSampleState extends State<TreemapRangeColorMappin
           country: 'Südafrika',
           miningConditions: 'Untertagebau mit hohem Energieverbrauch und Umweltauswirkungen.',
           productionDetails: 'Hochwertige Verarbeitung, hohe Reinheit erforderlich.',
-          imagePath: 'assets/gold.jpg' // Pfad zum Bild
+          imagePath: 'assets/gold.jpg'
       ),
       _ResourceDetails(
           resourceName: 'Silber',
@@ -157,7 +157,7 @@ class _TreemapRangeColorMappingSampleState extends State<TreemapRangeColorMappin
           country: 'Mexiko',
           miningConditions: 'Ähnlich wie bei Gold, jedoch mit geringerer ökologischer Bedeutung.',
           productionDetails: 'Raffination oft zusammen mit Gold.',
-          imagePath: 'assets/silber.jpg' // Pfad zum Bild
+          imagePath: 'assets/silber.jpg'
       ),
       _ResourceDetails(
           resourceName: 'Lithium',
@@ -170,7 +170,7 @@ class _TreemapRangeColorMappingSampleState extends State<TreemapRangeColorMappin
           country: 'Bolivien',
           miningConditions: 'Gewinnung aus Salzseen, problematisch hinsichtlich Wasserverbrauch.',
           productionDetails: 'Elektrolytische Verarbeitung erforderlich.',
-          imagePath: 'assets/lithium.jpg' // Pfad zum Bild
+          imagePath: 'assets/lithium.jpg'
       ),
       _ResourceDetails(
           resourceName: 'Zinn',
@@ -183,15 +183,15 @@ class _TreemapRangeColorMappingSampleState extends State<TreemapRangeColorMappin
           country: 'Indonesien',
           miningConditions: 'Hauptsächlich Tagebau, führt zu erheblichen Umweltbelastungen.',
           productionDetails: 'Schmelzverfahren häufig mit umweltfreundlichen Technologien.',
-          imagePath: 'assets/zinn.jpg' // Pfad zum Bild
+          imagePath: 'assets/zinn.jpg'
       ),
     ];
 
 
     _colorMappers = <TreemapColorMapper>[
-      TreemapColorMapper.range(from: 1, to: 3, color: Colors.green, name: 'Niedrig'),
+      TreemapColorMapper.range(from: 1, to: 3, color: Colors.green, name: 'Gut'),
       TreemapColorMapper.range(from: 4, to: 6, color: Colors.orange, name: 'Mittel'),
-      TreemapColorMapper.range(from: 7, to: 10, color: Colors.red, name: 'Hoch'),
+      TreemapColorMapper.range(from: 7, to: 10, color: Colors.red, name: 'Schlecht'),
     ];
   }
 
@@ -296,7 +296,7 @@ class _TreemapRangeColorMappingSampleState extends State<TreemapRangeColorMappin
                                           child: Padding(
                                             padding: const EdgeInsets.all(4.0),
                                             child: Text(
-                                              '${tile.group} (${_resourceDetailsList[tile.indices[0]].usagePercentage}%)',  // Ressourcenname mit Nutzungsanteil
+                                              '${tile.group} (${_resourceDetailsList[tile.indices[0]].usagePercentage}%)',
                                               style: TextStyle(
                                                 fontSize: 16,
                                                 fontWeight: FontWeight.bold,
@@ -312,7 +312,7 @@ class _TreemapRangeColorMappingSampleState extends State<TreemapRangeColorMappin
                                                 child: Container(
                                                   decoration: BoxDecoration(
                                                     color: _getColorForImpact(_resourceDetailsList[tile.indices[0]].environmentalImpact),
-                                                    border: Border(right: BorderSide(width: 1, color: Colors.black)), // Schwarze Linie rechts
+                                                    border: Border(right: BorderSide(width: 1, color: Colors.black)),
                                                   ),
                                                   alignment: Alignment.center,
                                                   child: Padding(
@@ -367,10 +367,10 @@ class _TreemapRangeColorMappingSampleState extends State<TreemapRangeColorMappin
                                 child: Card(
                                   elevation: 4.0,
                                   child: Row(
-                                    crossAxisAlignment: CrossAxisAlignment.start,  // Zentriert die Kinder vertikal
+                                    crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
                                       Expanded(
-                                        flex: 3,  // Nimmt mehr Platz für die Details
+                                        flex: 3,
                                         child: Padding(
                                           padding: const EdgeInsets.all(16.0),
                                           child: Column(
@@ -400,7 +400,7 @@ class _TreemapRangeColorMappingSampleState extends State<TreemapRangeColorMappin
                                                     ],
                                                   ),
                                                   Positioned(
-                                                    top: 0,  // Positioniert die Bilder oben in der Spalte
+                                                    top: 0,
                                                     left: 0,
                                                     child: Column(
                                                       children: getImagesForDetails(_selectedBoxIndex),
@@ -422,7 +422,7 @@ class _TreemapRangeColorMappingSampleState extends State<TreemapRangeColorMappin
                                         ),
                                       ),
                                       Expanded(
-                                        flex: 1,  // Weniger Platz für das Bild
+                                        flex: 1,
                                         child: Padding(
                                           padding: const EdgeInsets.all(8.0),
                                           child: Image.asset(
@@ -472,12 +472,15 @@ class _TreemapRangeColorMappingSampleState extends State<TreemapRangeColorMappin
           ),
           Expanded(
             flex: 5,
-            child: Text(
-              ' ' + value, // Leerzeichen vor dem Wert hinzugefügt
-              textAlign: TextAlign.left,
-              style: TextStyle(
-                fontSize: 16.0,
-                color: Colors.black,
+            child: Container(
+              padding: const EdgeInsets.only(left: 8.0),
+              child: Text(
+                value,
+                textAlign: TextAlign.left,
+                style: TextStyle(
+                  fontSize: 16.0,
+                  color: Colors.black,
+                ),
               ),
             ),
           ),
@@ -521,7 +524,7 @@ class _ResourceDetails {
     required this.miningConditions,
     required this.productionDetails,
     required this.recyclability,
-    required this.imagePath, // Neues Feld für den Bildpfad
+    required this.imagePath,
   });
 
   final String resourceName;
@@ -534,5 +537,5 @@ class _ResourceDetails {
   final String miningConditions;
   final String productionDetails;
   final String recyclability;
-  final String imagePath; // Neues Feld
+  final String imagePath;
 }
