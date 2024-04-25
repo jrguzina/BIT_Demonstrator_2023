@@ -47,6 +47,7 @@ class _EnergyUsagePageState extends State<EnergyUsagePage> {
                   series: <ChartSeries>[
                     ColumnSeries<ChartData, String>(
                       name: 'Durchschnittsverbrauch',
+                      color: Colors.red,
                       dataSource: [
                         ChartData('Jan', 200),
                         ChartData('Feb', 180),
@@ -66,6 +67,7 @@ class _EnergyUsagePageState extends State<EnergyUsagePage> {
                     ),
                     ColumnSeries<ChartData, String>(
                       name: 'Smart Home Verbrauch',
+                      color: Colors.green,
                       dataSource: [
                         ChartData('Jan', 200),
                         ChartData('Feb', 180),
@@ -214,11 +216,57 @@ class _EnergyUsagePageState extends State<EnergyUsagePage> {
                               xValueMapper: (ChartData data, _) => data.label,
                               yValueMapper: (ChartData data, _) => data.value,
                               dataLabelMapper: (ChartData data, _) => data.label,
+                              pointColorMapper: (ChartData data, _) => data.label == 'StandBy' ? Colors.red : Colors.green,
                               dataLabelSettings: DataLabelSettings(
                                 isVisible: true,
                                 labelPosition: ChartDataLabelPosition.outside,
                               ),
                             ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(height: 20.0),
+                      Text(
+                        'Verbrauch im Standby-Modus smarter Geräte:',
+                        style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
+                      ),
+                      Container(
+                        height: 300,
+                        child: SfCartesianChart(
+                          primaryXAxis: CategoryAxis(),
+                          title: ChartTitle(text: 'Gerätekategorie'),
+                          legend: Legend(isVisible: true),
+                          primaryYAxis: NumericAxis(minimum: 0, maximum: 30, interval: 1),
+                          series: <ChartSeries>[
+                            RangeColumnSeries<DeviceData, String>(
+                              name: 'kWH pro Jahr im Standby Betrieb',
+                              color: Colors.red,
+                              dataSource: [
+                                DeviceData('Kochen und Backen', 8.8, 26.3, icon: Icons.kitchen),
+                                DeviceData('Spülen', 4.4, 17.5, icon: Icons.wash),
+                                DeviceData('Kleingeräte', 9.6, 17.5, icon: Icons.devices_other),
+                                DeviceData('Waschen und Trocknen', 11.1, 26.3, icon: Icons.local_laundry_service),
+                                DeviceData('Kühlen und Gefrieren', 8.8, 26.3, icon: Icons.ac_unit),
+                                DeviceData('Beleuchtung', 3.5, 26.3, icon: Icons.lightbulb_outline),
+                              ],
+                              xValueMapper: (DeviceData data, _) => data.category,
+                              lowValueMapper: (DeviceData data, _) => data.minWatt,
+                              highValueMapper: (DeviceData data, _) => data.maxWatt,
+                        dataLabelMapper: (DeviceData data, _) => data.category,
+                        dataLabelSettings: DataLabelSettings(
+                          isVisible: true,
+                          labelAlignment: ChartDataLabelAlignment.top,
+                          textStyle: TextStyle(fontSize: 12),
+                          builder: (dynamic data, dynamic point, dynamic series, int pointIndex, int seriesIndex) {
+                            Color iconColor = Colors.white;
+                            return Icon(
+                              data.icon,
+                              color: iconColor,
+                              size: 24,
+                            );
+                          },
+                        ),
+                        ),
                           ],
                         ),
                       ),
@@ -271,6 +319,19 @@ class ChartData {
 
   ChartData(this.month, this.value, {this.label = ''});
 }
+
+class DeviceData {
+  final String category;
+  final double minWatt;
+  final double maxWatt;
+  final double minKwh;
+  final double maxKwh;
+  IconData icon;
+
+  DeviceData(this.category, this.minWatt, this.maxWatt, {this.minKwh = 0, this.maxKwh = 0, IconData? icon})
+      : this.icon = icon ?? Icons.device_unknown; // Provide a default icon if none is provided
+}
+
 
 void main() {
   runApp(MaterialApp(
